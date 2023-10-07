@@ -12,10 +12,45 @@ import Article from "./components/Discuss";
 import ArticleList from "./pages/article";
 import Product from "./pages/product";
 import DetailArticle from "./pages/detailarticle";
+import { useEffect, useState } from "react";
+import { AUTH_CHECK, AUTH_ERROR } from "./stores/rootReducer";
+import API, { setAuthToken } from "./lib/api";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const [isLoading, setIsLoading] =useState<boolean>(true)
+  // const auth =useSelector
+const navigate = useNavigate()
+const dispatch =useDispatch()
+
+async function AuthCheck(){
+  try{
+    setAuthToken(localStorage.token)
+    const response = await API.get("/auth/check")
+   dispatch(AUTH_CHECK(response.data.user))
+
+    setIsLoading(false)
+  }catch(err){
+    dispatch(AUTH_ERROR())
+    setIsLoading(false)
+    navigate('/auth/login')
+
+  }
+
+}
+useEffect(()=>{
+  if (localStorage.token){
+    
+    AuthCheck()
+  }else{
+    navigate('/auth/login')
+    setIsLoading(false)
+  }
+},[])
   return (
     <>
+    {isLoading ? null:
       <Box>
         <Routes>
           <Route path="/MyStore/:id" element={<Store />} />
@@ -36,6 +71,7 @@ function App() {
           <Route path="/DetailArticle" element={<DetailArticle />} />
         </Routes>
       </Box>
+      }
     </>
   );
 }

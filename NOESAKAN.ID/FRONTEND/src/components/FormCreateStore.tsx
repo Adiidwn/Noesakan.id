@@ -48,7 +48,7 @@ const Blur = (props: IconProps) => {
 export default function FormCreateStore() {
   const [form, setForm] = useState<IStoreCreate>({
     name: "",
-    username: "",
+    userName: "",
     province: "",
     city: "",
     district: "",
@@ -146,7 +146,7 @@ export default function FormCreateStore() {
                   onChange={handleChange}
                 />
               </FormControl>
-              <FormControl id="username" isRequired>
+              <FormControl id="userName" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
                   Nama Lain
                 </FormLabel>
@@ -159,7 +159,7 @@ export default function FormCreateStore() {
                   }}
                   placeholder="Username Store"
                   type="text"
-                  name="username"
+                  name="userName"
                   onChange={handleChange}
                 />
               </FormControl>
@@ -193,6 +193,7 @@ export default function FormCreateStore() {
                       color: "gray.500",
                     }}
                     placeholder="City"
+                    type="text"
                     name="city"
                     onChange={handleChange}
                   />
@@ -232,7 +233,7 @@ export default function FormCreateStore() {
                   onChange={handleChange}
                 />
               </FormControl>
-              <FormControl id="pjoneNumber" isRequired>
+              <FormControl id="phoneNumber" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
                   Nomor Telepon
                 </FormLabel>
@@ -261,7 +262,7 @@ export default function FormCreateStore() {
                     color: "gray.500",
                   }}
                   placeholder="dd/mm/yyyy"
-                  type="text"
+                  type="number"
                   name="age"
                   onChange={handleChange}
                 />

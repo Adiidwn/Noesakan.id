@@ -1,7 +1,7 @@
 export interface IStoreCreate {
   id?: number;
   name?: string;
-  username?: string;
+  userName?: string;
   province?: string;
   city: string;
   district: string;

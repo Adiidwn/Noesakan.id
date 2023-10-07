@@ -134,7 +134,6 @@ class StoreService {
         },
       });
       const data = req.body;
-
       if (data.name != "") {
         store.name = data.name;
       }
