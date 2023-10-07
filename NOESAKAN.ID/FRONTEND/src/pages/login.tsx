@@ -6,12 +6,6 @@ export function Login() {
   return (
     <>
       <Grid   
-      // style={{
-      //   backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8)), url(${Image})`,
-      //   backgroundSize: 'cover',
-      //   backgroundRepeat: 'no-repeat',
-      //   width: '215vh',
-      // }} 
       >
         <GridItem></GridItem>
         <GridItem>
