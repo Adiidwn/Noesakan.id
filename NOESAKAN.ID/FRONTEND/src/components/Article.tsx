@@ -52,8 +52,8 @@ export default function Article() {
     fontSize="xl"
     fontWeight="bold"
     color="blue.500"
-    textShadow="2px 2px 4px rgba(0, 0, 0, 0.2)" // Efek text shadow
-    mb={4} // Margin bottom untuk jarak dari judul ke menu
+    textShadow="2px 2px 4px rgba(0, 0, 0, 0.2)" 
+    mb={4} 
   >
     NOESAKAN.ID
   </Text>
