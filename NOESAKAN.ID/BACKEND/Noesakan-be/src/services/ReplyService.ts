@@ -68,13 +68,16 @@ class ReplyService {
   //   }
   // }
 
-  async create(req: Request, res: Response, idStore: string) {
-    const id = parseInt(idStore);
-    try {
-      const data = req.body;
-      const loginSession = res.locals.loginSession;
+  async create(dataResponse: any, idStore: any) {
+    const id = parseInt(idStore as string);
+    const res = dataResponse;
+    console.log({ res: res, id: idStore });
 
-      const filename = res.locals.filename;
+    try {
+      const data = res;
+      const loginSession = res.loginSession.id as number;
+
+      const filename = res.filename;
 
       cloudinary.config({
         cloud_name: process.env.CLOUD_NAME,
@@ -98,7 +101,7 @@ class ReplyService {
           id: id,
         },
         users: {
-          id: loginSession.id,
+          id: loginSession,
         },
       });
 
