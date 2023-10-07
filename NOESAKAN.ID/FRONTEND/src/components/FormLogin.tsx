@@ -16,46 +16,10 @@ import {
 } from "@chakra-ui/react";
 import { useLogin } from "../features/auth/useLogin";
 import { useNavigate } from 'react-router-dom';
-import { AUTH_LOGIN } from "../types/rootreducer";
-import API, { setAuthToken } from "../lib/api";
-import { useDispatch, useSelector } from 'react-redux';
-import { ChangeEvent, useState } from "react";
-import { IUserLogin } from "../interfaces/User";
-import { RootState } from "../stores/slice/rootstate";
 
-export default function FormLogin() {
-
-  const auth = useSelector((state:RootState)=> state.auth)
-  console.log('ini auth',auth)
-  const [form,setForm] = useState<IUserLogin>({
-    email:"",
-    password:""
-  })
- 
- 
-  function handleChange(event:ChangeEvent<HTMLInputElement>){
-    setForm({
-        ...form,
-        [event.target.name] : event.target.value
-       
-    })
-} console.log(form)
-async function handleLogin (){
-  try{
-    const response = await API.post("/auth/signin",form)
-    dispatch(AUTH_LOGIN(response.data))
-    // console.log("login berhasil",response)
-    localStorage.setItem("token" , response.data.token)
-    setAuthToken(localStorage.token);
-    navigate('/')
-    console.log('response data',response.data)
-  } catch (err){
-    console.log("ini error ",err)
-  }
-}
-const navigate = useNavigate()
-const dispatch = useDispatch()
-  // const { handleChange, handleLogin } = useLogin();
+export default function SplitScreen() {
+  const navigate = useNavigate();
+  const { handleChange, handleLogin } = useLogin();
   // const user = useSelector((state: RootState) => state.user);
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
@@ -88,12 +52,9 @@ const dispatch = useDispatch()
             >
               <Checkbox>Remember me</Checkbox>
               <Stack pt={6}>
-                <Text color={"black"} align={"center"}>
-                  Belum punya akun?{" "}
-                  <Link href="/auth/register" color={"blue.400"}>
-                    Register
-                  </Link>
-                </Text>
+              <Text align={'center'} onClick={()=> navigate("/auth/login")}>
+                Sudah punya akun? <Link color={'blue.400'}>Login</Link>
+              </Text>
               </Stack>
             </Stack>
             <Box display={"flex"} justifyContent={"flex-end"}>

@@ -5,7 +5,7 @@ import { setAuthToken } from "../../lib/api";
 
 const initialAuthstate: IUser = {
     id: 0,
-    fullname: "",
+    name: "",
     username: "",
     email: "",
     picture: "",
@@ -22,7 +22,7 @@ export const authSlice = createSlice({
       setAuthToken(localStorage.token);
       const user:IUser = {
         id:payload.user.id,
-        fullname:payload.user.fullname,
+        name:payload.user.fullname,
         username:payload.user.username,
         email:payload.user.email, 
         picture:payload.user.picture
@@ -35,7 +35,7 @@ export const authSlice = createSlice({
 
       const user:IUser = {
         id:payload.id,
-        fullname:payload.fullname,
+        name:payload.fullname,
         username:payload.username,
         email:payload.email,
         picture:payload.picture

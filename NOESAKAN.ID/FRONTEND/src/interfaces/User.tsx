@@ -1,14 +1,14 @@
+import { IStore } from "./Store";
+
 export interface IUser {
   id?: number;
-  fullname?: string;
+  name?: string;
   username?: string;
   password?: string;
   email?: string;
   description?: string;
   picture?: string;
   image?: string;
-  followers?: number;
-  following?: number;
 }
 export interface IDeleteThread {
   image?: string;

@@ -5,15 +5,45 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@ch
 import { GiCirclingFish } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import './navbar.css';
-import { useNavigate } from '@remix-run/react';
+import { IStore } from '../interfaces/Store';
+import { Link, useNavigate } from 'react-router-dom';
+import API from '../lib/api';
+import { IUser } from '../interfaces/User';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const [store, setStore] = useState <IStore>();
   const [isScrolled, setIsScrolled] = useState(false);
-  
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState<IUser>();
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+
+    navigate('/')
+  }
+
+  async function UserDetail(){
+    const response = await API.get("/auth/check")
+
+    setIsLoggedIn(response.data)
+    console.log('====================================');
+    console.log("response.data navbar:", response.data);
+    console.log("setIsLoggedIn navbar:", setIsLoggedIn);
+    console.log('====================================');
+  }
+  async function StoreDetail(){
+    const response = await API.get("/store/get")
+    setStore(response.data)
+    console.log("response.data.store.id", response.data)
+    console.log("response", response)
+    
+  }
   
   useEffect(() => {
+    UserDetail()
+    StoreDetail()
     const handleScroll = () => {
+      
       if (window.scrollY > 0) {
         setIsScrolled(true);
       } else {
@@ -81,15 +111,47 @@ export default function Navbar() {
           direction={'row'}
           spacing={6}
         >
-          {/* <Button
+         {isLoggedIn && isLoggedIn.id ? (
+          <Box>
+          <span>Welcome, {isLoggedIn.name}</span>
+          <Button onClick={handleLogout}>Logout</Button>
+        </Box>
+      ) : (
+        <Button
+          display={{ base: 'none', md: 'inline-flex' }}
+          fontSize={'sm'}
+          fontWeight={600}
+          color={'white'}
+          bg={'blue.900'}
+          onClick={() => navigate('/auth/login')}
+          _hover={{
+            bg: 'pink.300',
+          }}
+        >
+          Login
+        </Button>
+        
+      )}
+            {/* <Text align={'center'} onClick={()=> navigate("/auth/login")}>
+                Sudah punya akun? <Link color={'blue.400'}>Login</Link>
+              </Text> */}
+          {/* </Link> */}
+          <Link to={`/Mystore/${store?.id}`}>
+          <Button
             as={'a'}
+            display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}
+            fontWeight={600}
+            color={'white'}
+            bg={'blue.900'}
+            
+            _hover={{
+              bg: 'pink.300',
+            }}
           >
-            Sign In
-          </Button> */}
+            Toko anda
+          </Button>
+          </Link>
           <Button
             as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}

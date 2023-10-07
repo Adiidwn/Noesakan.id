@@ -1,6 +1,6 @@
 import Home from "./pages/home";
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from "./pages/login";
 import Register from "./pages/register";
 import DetailProduct from "./pages/detailProduct";
@@ -11,41 +11,41 @@ import Store from "./pages/store";
 import CreateStore from "./pages/createStore";
 
 function App() {
-//   const [isLoading, setIsLoading] =useState<boolean>(true)
-//   // const auth =useSelector
-// const navigate = useNavigate()
-// const dispatch =useDispatch()
+  //   const [isLoading, setIsLoading] =useState<boolean>(true)
+  //   // const auth =useSelector
+  const navigate = useNavigate()
+  // const dispatch =useDispatch()
 
-// async function AuthCheck(){
-//   try{
-//     setAuthToken(localStorage.token)
-//     const response = await API.get("/auth/check")
-//    dispatch(AUTH_CHECK(response.data.user))
+  // async function AuthCheck(){
+  //   try{
+  //     setAuthToken(localStorage.token)
+  //     const response = await API.get("/auth/check")
+  //    dispatch(AUTH_CHECK(response.data.user))
 
-//     setIsLoading(false)
-//   }catch(err){
-//     dispatch(AUTH_ERROR())
-//     setIsLoading(false)
-//     navigate('/auth/login')
+  //     setIsLoading(false)
+  //   }catch(err){
+  //     dispatch(AUTH_ERROR())
+  //     setIsLoading(false)
+  //     navigate('/auth/login')
 
-//   }
+  //   }
 
-// }
-// useEffect(()=>{
-//   if (localStorage.token){
-    
-//     AuthCheck()
-//   }else{
-//     navigate('/auth/login')
-//     setIsLoading(false)
-//   }
-// },[])
+  // }
+  // useEffect(()=>{
+  //   if (localStorage.token){
+
+  //     AuthCheck()
+  //   }else{
+  //     navigate('/auth/login')
+  //     setIsLoading(false)
+  //   }
+  // },[])
   return (
     <>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/MyStore/:id" element={<Store />} />
+          <Route path="/MyStore/:id}" element={<Store />} />
           <Route path="/create/store" element={<CreateStore />} />
           <Route path="/" element={<Home />} />
           {/* <Route
@@ -59,7 +59,9 @@ function App() {
           />
           <Route
             path="/auth/register"
-            element={!localStorage.token ? <Register /> : <Navigate to="/auth/login" />}
+            element={
+              !localStorage.token ? <Register /> : <Navigate to="/auth/login" />
+            }
           />
           <Route path="/DiscussGrup" element={<ArticleList />} />
           <Route path="/Product" element={<Product />} />

@@ -12,7 +12,7 @@ class StoreService {
   async find(reg: Request, res: Response) {
     try {
       const loginSession = res.locals.loginSession;
-      const store = await this.storeRepository.findOne({
+      const store = await this.storeRepository.find({
         relations: ["users"],
         where: {
           users: {
@@ -48,7 +48,7 @@ class StoreService {
         );
       }
 
-      console.log("cloud Res", cloudinaryResponse);
+      // console.log("cloud Res", cloudinaryResponse);
 
       const store = this.storeRepository.create({
         name: data.name,
@@ -80,15 +80,17 @@ class StoreService {
 
   async findOne(req: Request, res: Response) {
     try {
-      const id = parseInt(req.params.id);
-      const threads = await this.storeRepository.findOne({
-        relations: ["user", "replies", "likes"],
+      const loginSession = res.locals.loginSession;
+      const store = await this.storeRepository.findOne({
+        // relations: ["users"],
         where: {
-          id: id,
+          users: {
+            id: loginSession.id,
+          }
         },
       });
 
-      return res.status(200).json(threads);
+      return res.status(200).json(store);
     } catch (err) {
       return res.status(500).json({ error: "sorry there was an error" });
     }
