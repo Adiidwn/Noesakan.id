@@ -1,11 +1,12 @@
-import { Button } from '@chakra-ui/button';
 import { Image } from '@chakra-ui/image';
 import { Box, Flex, Text } from '@chakra-ui/layout';
-import { useState } from 'react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { useState } from 'react';
+import { Button } from '@chakra-ui/button';
 import Navbar from '../features/navbar';
+import ProductInDetail from './productInDetail';
+import Testimonials from './testimonials';
 import Footer from './footer';
-import StoreProductInStore from './storeProductInStore';
 
 function randomColor() {
   return Math.floor(Math.random() * 2);
@@ -73,11 +74,11 @@ export function Rating({ rating, numReviews }: RatingProps) {
   );
 }
 
-export default function Store() {
+export default function DetailProduct() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
   return (
     <>
-      <Box backgroundImage={`linear-gradient(rgba(0, 0, 200, 0.3), rgba(255, 255, 255, 0.2))`}>
+      <Box backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 255, 0.2))`}>
         <Navbar />
         <Box pt={10}>
           <Flex
@@ -99,27 +100,32 @@ export default function Store() {
                   fontWeight={'bold'}
                   fontSize={'35px'}
                 >
-                  Nama Store
+                  Ikan Cupang
+                </Text>
+                <Text
+                  fontSize={'23px'}
+                  fontWeight="bold"
+                  color="white"
+                >
+                  Rp.13.000/Kg
                 </Text>
                 <Text
                   fontWeight={'500'}
                   mb={2}
                 >
-                  @username
-                </Text>
-                <Text mt={1}>Deskripsi Toko:</Text>
-                <Text
-                  w={'390px'}
-                  textAlign={'justify'}
-                  mb={5}
-                >
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fugiat quas modi quisquam temporibus quis error, odit voluptatum totam asperiores rem illum natus magnam molestias, aperiam adipisci at, quo soluta?
+                  Fishing Store
                 </Text>
                 <Rating
                   rating={data.rating}
                   numReviews={data.numReviews}
                 />
-
+                <Text mt={5}>Keterangan Produk:</Text>
+                <Text
+                  w={'390px'}
+                  textAlign={'justify'}
+                >
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fugiat quas modi quisquam temporibus quis error, odit voluptatum totam asperiores rem illum natus magnam molestias, aperiam adipisci at, quo soluta?
+                </Text>
                 <Button
                   w={'50%'}
                   mt={5}
@@ -137,7 +143,8 @@ export default function Store() {
               </Flex>
             </Box>
           </Flex>
-          <StoreProductInStore />
+          <ProductInDetail />
+          <Testimonials />
           <Footer />
         </Box>
       </Box>

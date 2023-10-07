@@ -90,6 +90,11 @@ export default function SignupCard() {
             WELCOME TO NOESAKAN.ID
           </Heading>
         </Stack>
+        <Card  
+         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+         bgGradient="linear(to-t, #f06, #0c0, #00f)"
+         bgClip="text"
+         color="transparent">
         <Stack
           bg={"gray.50"}
           rounded={"xl"}
@@ -232,6 +237,7 @@ export default function SignupCard() {
           </Box>
           form
         </Stack>
+        </Card>
       </Container>
       <Blur
         position={"absolute"}

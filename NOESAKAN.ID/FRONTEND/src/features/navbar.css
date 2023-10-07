@@ -29,3 +29,34 @@
   align-items: center;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease; /* Efek transisi warna latar belakang dan efek blur */
 }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spin-animation {
+  animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
+}
+
+.typing-animation-container {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.typing-animation-char {
+  display: inline;
+  opacity: 0;
+  animation: typing-animation 4s ease-in-out infinite;
+}
+
+@keyframes typing-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
