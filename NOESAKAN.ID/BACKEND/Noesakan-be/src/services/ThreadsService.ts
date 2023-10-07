@@ -76,9 +76,9 @@ class ThreadService {
       console.log("ini data boss", data);
 
       const cloudinaryID = cloudinary.config({
-        cloud_name: "dk0jtenod",
-        api_key: "179758344782873",
-        api_secret: "5U9WfOhBlle6Khly9EmNQ9rBzu0",
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
       });
 
       const cloudinaryResponse = await cloudinary.uploader.upload(

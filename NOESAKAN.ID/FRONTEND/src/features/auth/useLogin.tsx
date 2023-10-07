@@ -28,7 +28,7 @@ export function useLogin() {
 
       localStorage.setItem("token", response.data.token);
       //   dispatch(AUTH_LOGIN(response.data));
-      navigate("/DiscussGrup");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }

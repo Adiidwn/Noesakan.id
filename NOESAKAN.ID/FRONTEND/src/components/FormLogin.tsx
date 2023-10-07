@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Box,
   Button,
   Checkbox,
   Flex,
@@ -9,10 +10,12 @@ import {
   Heading,
   Image,
   Input,
+  Link,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import { useLogin } from "../features/auth/useLogin";
+import { useNavigate } from "@remix-run/react";
 
 export default function SplitScreen() {
   const { handleChange, handleLogin } = useLogin();
@@ -21,14 +24,14 @@ export default function SplitScreen() {
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
-          <Heading fontSize={"2xl"}>Sign in to your account</Heading>
+          <Heading fontSize={"7xl"}>Login Noesakan</Heading>
           <FormControl id="email">
-            <FormLabel>Email address</FormLabel>
-            <Input onChange={handleChange} name="email" type="email" />
+            <FormLabel>Email </FormLabel>
+            <Input onChange={handleChange} placeholder="Email Adress" name="email" type="email" />
           </FormControl>
           <FormControl id="password">
-            <FormLabel>Password</FormLabel>
-            <Input onChange={handleChange} name="password" type="password" />
+            <FormLabel>Sandi</FormLabel>
+            <Input onChange={handleChange} placeholder="Password" name="password" type="password" />
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -37,8 +40,16 @@ export default function SplitScreen() {
               justify={"space-between"}
             >
               <Checkbox>Remember me</Checkbox>
-              <Text color={"blue.500"}>Forgot password?</Text>
+              <Stack pt={6}>
+              <Text color={"black"} align={'center'} >
+                Belum punya akun? <Link href="/auth/register" color={'blue.400'}>Register</Link>
+              </Text>
             </Stack>
+            </Stack>
+            <Box display={"flex"} justifyContent={"flex-end"}>
+
+              <Text color={"blue.500"}>Forgot password?</Text>
+            </Box>
             <Button
               onClick={handleLogin}
               colorScheme={"blue"}
@@ -56,6 +67,7 @@ export default function SplitScreen() {
           src={
             "https://images.unsplash.com/photo-1535262412227-85541e910204?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80"
           }
+          style={{ filter: 'brightness(0.7)' }} 
         />
       </Flex>
     </Stack>

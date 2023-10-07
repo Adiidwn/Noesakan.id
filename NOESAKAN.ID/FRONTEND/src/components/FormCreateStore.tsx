@@ -1,5 +1,6 @@
 "use client";
 
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -11,14 +12,17 @@ import {
   IconProps,
   Input,
   InputGroup,
+  InputRightElement,
+  Link,
   SimpleGrid,
   Stack,
-  useBreakpointValue
+  Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IStoreCreate } from "../interfaces/Store";
 import API from "../lib/api";
-import { IProducts } from "../interfaces/Product";
 
 const Blur = (props: IconProps) => {
   return (
@@ -41,13 +45,18 @@ const Blur = (props: IconProps) => {
   );
 };
 
-export default function FormCreateProducts() {
-  const [form, setForm] = useState<IProducts>({
-    productName: "",
-    price: "",
-    image: "",
+export default function FormCreateStore() {
+  const [form, setForm] = useState<IStoreCreate>({
+    name: "",
+    username: "",
+    province: "",
+    city: "",
+    district: "",
     description: "",
-    stock: "",
+    phoneNumber: 0,
+    age: 0,
+    bankAccount: 0,
+    image: "",
   });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -57,9 +66,10 @@ export default function FormCreateProducts() {
     });
   }
 
-  async function handleCreateProduct() {
+  async function handleCreateStore() {
     try {
       const response = await API.post("/store/create", form);
+      navigate("/");
       console.log("registrasion Store Success", response);
     } catch (err) {
       console.log(err);
@@ -114,14 +124,14 @@ export default function FormCreateProducts() {
               lineHeight={1.1}
               fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
               textShadow="0 2px 4px rgba(0,0,128, 0.4)">
-              Buat Product
+              Daftar Store Noesakan
             </Heading>
           </Stack>
           <Box as={"form"} mt={1}>
             <Stack spacing={2}>
-              <FormControl id="productName" isRequired>
+              <FormControl id="name" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
-                  Nama Product
+                  Nama Toko
                 </FormLabel>
                 <Input
                   bg={"gray.100"}
@@ -130,15 +140,15 @@ export default function FormCreateProducts() {
                   _placeholder={{
                     color: "gray.500",
                   }}
-                  placeholder="Product Name"
+                  placeholder="Name"
                   type="text"
-                  name="productName"
+                  name="name"
                   onChange={handleChange}
                 />
               </FormControl>
-              <FormControl id="price" isRequired>
+              <FormControl id="username" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
-                  Harga
+                  Nama Lain
                 </FormLabel>
                 <Input
                   bg={"gray.100"}
@@ -147,9 +157,61 @@ export default function FormCreateProducts() {
                   _placeholder={{
                     color: "gray.500",
                   }}
-                  placeholder="Price"
+                  placeholder="Username Store"
                   type="text"
-                  name="price"
+                  name="username"
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl id="province" isRequired>
+                <FormLabel color={"black"} ml={"10px"}>
+                  Provinsi
+                </FormLabel>
+                <Input
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  placeholder="Province"
+                  type="text"
+                  name="province"
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl id="city" isRequired>
+                <FormLabel color={"black"} ml={"10px"}>
+                  Kota
+                </FormLabel>
+                <InputGroup>
+                  <Input
+                    bg={"gray.100"}
+                    border={0}
+                    color={"gray.500"}
+                    _placeholder={{
+                      color: "gray.500",
+                    }}
+                    placeholder="City"
+                    name="city"
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+              </FormControl>
+              <FormControl id="district" isRequired>
+                <FormLabel color={"black"} ml={"10px"}>
+                  Kecamatan
+                </FormLabel>
+                <Input
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  placeholder="District"
+                  type="text"
+                  name="district"
                   onChange={handleChange}
                 />
               </FormControl>
@@ -170,23 +232,39 @@ export default function FormCreateProducts() {
                   onChange={handleChange}
                 />
               </FormControl>
-              <FormControl id="stock" isRequired>
+              <FormControl id="pjoneNumber" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
-                  Stock
+                  Nomor Telepon
                 </FormLabel>
-                <InputGroup>
-                  <Input
-                    bg={"gray.100"}
-                    border={0}
-                    color={"gray.500"}
-                    _placeholder={{
-                      color: "gray.500",
-                    }}
-                    placeholder="Stock"
-                    name="stock"
-                    onChange={handleChange}
-                  />
-                </InputGroup>
+                <Input
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  placeholder="Phone Number"
+                  type="number"
+                  name="phoneNumber"
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl id="age" isRequired>
+                <FormLabel color={"black"} ml={"10px"}>
+                  Tanggal Lahir
+                </FormLabel>
+                <Input
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  placeholder="dd/mm/yyyy"
+                  type="text"
+                  name="age"
+                  onChange={handleChange}
+                />
               </FormControl>
               <FormControl id="bankAccount" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
@@ -223,7 +301,7 @@ export default function FormCreateProducts() {
             </Stack>
             <Button
               fontFamily={"heading"}
-              onClick={handleCreateProduct}
+              onClick={handleCreateStore}
               loadingText="Submitting"
               mt={8}
               w={"full"}

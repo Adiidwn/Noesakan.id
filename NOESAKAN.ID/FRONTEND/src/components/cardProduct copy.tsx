@@ -3,22 +3,28 @@
 import {
   Box,
   Button,
-  Container,
   FormControl,
   FormLabel,
-  Heading,
   Icon,
   IconProps,
   Input,
   InputGroup,
-  SimpleGrid,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
   Stack,
   useBreakpointValue
 } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../lib/api";
 import { IProducts } from "../interfaces/Product";
+import API from "../lib/api";
 
 const Blur = (props: IconProps) => {
   return (
@@ -41,7 +47,7 @@ const Blur = (props: IconProps) => {
   );
 };
 
-export default function FormCreateProducts() {
+export default function FormCreateProduct() {
   const [form, setForm] = useState<IProducts>({
     productName: "",
     price: "",
@@ -59,8 +65,8 @@ export default function FormCreateProducts() {
 
   async function handleCreateProduct() {
     try {
-      const response = await API.post("/store/create", form);
-      console.log("registrasion Store Success", response);
+      const response = await API.post("/product/create", form);
+      console.log("Selling Product Success", response);
     } catch (err) {
       console.log(err);
     }
@@ -78,46 +84,17 @@ export default function FormCreateProducts() {
 
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <Box
-      position={"relative"}
-      objectFit={"cover"}
-      bgImage={
-        "https://images.unsplash.com/photo-1498654200943-1088dd4438ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-      }
-      w={"full"}>
-      <Container
-        as={SimpleGrid}
-        maxW={"100%"}
-        columns={{ base: 1, md: 2 }}
-        spacing={{ base: 4, lg: 32 }}
-        py={{ base: 10, sm: 20, lg: 1 }}>
-        <Stack spacing={{ base: 10, md: 20 }}>
-          <Heading
-            color={"blue.800"}
-            ml={"30px"}
-            lineHeight={1.1}
-            mt={"100px"}
-            fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
-            className="animated-text">
-            WELCOME TO NOESAKAN.ID
-          </Heading>
-        </Stack>
-        <Stack
-          bg={"gray.50"}
-          rounded={"xl"}
-          p={{ base: 4, sm: 6, md: 8 }}
-          spacing={{ base: 4 }}
-          maxW={{ lg: "lg" }}>
-          <Stack spacing={2}>
-            <Heading
-              color={"gray.800"}
-              lineHeight={1.1}
-              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              textShadow="0 2px 4px rgba(0,0,128, 0.4)">
-              Buat Product
-            </Heading>
-          </Stack>
-          <Box as={"form"} mt={1}>
+    <Popover>
+    <PopoverTrigger>
+      <Button>Jual Product</Button>
+    </PopoverTrigger>
+    <Portal>
+      <PopoverContent>
+        <PopoverArrow />
+        {/* <PopoverHeader>Jual Product</PopoverHeader> */}
+        <PopoverCloseButton />
+        <PopoverBody>
+        <Box as={"form"} mt={1}>
             <Stack spacing={2}>
               <FormControl id="productName" isRequired>
                 <FormLabel color={"black"} ml={"10px"}>
@@ -188,23 +165,6 @@ export default function FormCreateProducts() {
                   />
                 </InputGroup>
               </FormControl>
-              <FormControl id="bankAccount" isRequired>
-                <FormLabel color={"black"} ml={"10px"}>
-                  Bank Akun
-                </FormLabel>
-                <Input
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                  placeholder="Bank Account"
-                  type="number"
-                  name="bankAccount"
-                  onChange={handleChange}
-                />
-              </FormControl>
               <Box>
                 <label htmlFor="img">
                   <Icon
@@ -234,7 +194,7 @@ export default function FormCreateProducts() {
                 bgGradient: "linear(to-r, blue.500,blue.900)",
                 boxShadow: "xl",
               }}>
-              Buat Toko
+              Jual Product
             </Button>
             {/* <Stack pt={6}>
               <Text color={"black"} align={'center'} onClick={()=> navigate("/auth/login")}>
@@ -242,15 +202,10 @@ export default function FormCreateProducts() {
               </Text>
             </Stack> */}
           </Box>
-          form
-        </Stack>
-      </Container>
-      <Blur
-        position={"absolute"}
-        top={-10}
-        left={-10}
-        style={{ filter: "blur(70px)" }}
-      />
-    </Box>
+        </PopoverBody>
+        {/* <PopoverFooter>This is the footer</PopoverFooter> */}
+      </PopoverContent>
+    </Portal>
+  </Popover>
   );
 }
