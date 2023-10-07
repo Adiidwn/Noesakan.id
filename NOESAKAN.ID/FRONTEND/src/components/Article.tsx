@@ -48,7 +48,15 @@ export default function Article() {
             top="0"
             bgColor={'white'}
           >
-            {/* Menu Sidebar */}
+            <Text
+    fontSize="xl"
+    fontWeight="bold"
+    color="blue.500"
+    textShadow="2px 2px 4px rgba(0, 0, 0, 0.2)" 
+    mb={4} 
+  >
+    NOESAKAN.ID
+  </Text>
             <Stack mt={5} spacing={2}>
               <MenuItem icon={<FaHome />} text="Beranda" />
               <MenuItem icon={<FaProductHunt />} text="Produk" />

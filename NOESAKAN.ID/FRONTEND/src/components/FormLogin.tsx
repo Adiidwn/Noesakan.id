@@ -18,7 +18,11 @@ export default function SplitScreen() {
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={4} w={'full'} maxW={'md'}>
-          <Heading fontSize={'2xl'}>Sign in to your account</Heading>
+          <Heading fontSize={'2xl'} 
+    fontWeight="bold"
+    color="blue.500"
+    textShadow="2px 2px 4px rgba(0, 0, 0, 0.2)" 
+    mb={4} >Sign in to your account</Heading>
           <FormControl id="email">
             <FormLabel>Email address</FormLabel>
             <Input type="email" />
@@ -33,7 +37,7 @@ export default function SplitScreen() {
               align={'start'}
               justify={'space-between'}>
               <Checkbox>Remember me</Checkbox>
-              <Text color={'blue.500'}>Forgot password?</Text>
+              <Text color={'blue.500'} cursor={"pointer"}>Forgot password?</Text>
             </Stack>
             <Button colorScheme={'blue'} variant={'solid'}>
               Sign in
@@ -48,6 +52,7 @@ export default function SplitScreen() {
           src={
             'https://images.unsplash.com/photo-1535262412227-85541e910204?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80'
           }
+          style={{ filter: 'brightness(0.7)' }} 
         />
       </Flex>
     </Stack>

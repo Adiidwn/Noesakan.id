@@ -1,170 +1,160 @@
+'use client'
+
 import {
   Box,
-  Button,
   Flex,
-  FormControl,
-  FormLabel,
-  Input,
+  Stack,
+  Heading,
   Text,
-} from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { useHooksRegister } from "../hooks/HooksRegister";
-import { AiOutlinePicture } from "react-icons/ai";
+  Container,
+  Input,
+  Button,
+  SimpleGrid,
+  Avatar,
+  AvatarGroup,
+  useBreakpointValue,
+  IconProps,
+  Icon,
+} from '@chakra-ui/react'
 
-export default function FormRegister() {
-  const { handleChange, handleRegister } = useHooksRegister();
 
-  const navigate = useNavigate();
+const Blur = (props: IconProps) => {
   return (
-    <>
-      <Box m={2} p={2} w={"96"}>
-        <Box m={2} p={2}>
-          <Box p={2}>
-            <Text
-              fontSize="45px"
-              fontWeight="bold"
-              color="white"
-              textShadow="3px 3px 4px rgba(0, 191, 255, 0.8)"
-              alignItems={"center"}
-              display={"flex"}
-              justifyContent={"center"}
-            >
-              SIGN UP
-            </Text>
+    <Icon
+      width={useBreakpointValue({ base: '100%', md: '40vw', lg: '30vw' })}
+      zIndex={useBreakpointValue({ base: -1, md: -1, lg: 0 })}
+      height="560px"
+      viewBox="0 0 528 560"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}>
+      <circle cx="71" cy="61" r="111" fill=" #f785ff" />
+      <circle cx="244" cy="106" r="139" fill="#fa8cff" />
+      <circle cy="291" r="139" fill="#a953ff" />
+      <circle cx="80.5" cy="189.5" r="101.5" fill="#c652ff" />
+      <circle cx="196.5" cy="317.5" r="101.5" fill=" #717afd" />
+      <circle cx="70.5" cy="458.5" r="101.5" fill=" #1740f4" />
+      <circle cx="426.5" cy="-0.5" r="101.5" fill="#4299E1" />
+    </Icon>
+  )
+};
+
+
+
+export default function JoinOurTeam() {
+  return (
+    <Box position={'relative'}>
+      <Container
+        as={SimpleGrid}
+        maxW={'7xl'}
+        columns={{ base: 1, md: 2 }}
+        spacing={{ base: 8, lg: 32 }}
+        py={{ base: 10, sm: 20, lg: 32 }}>
+        <Stack spacing={{ base: 10, md: 20 }}>
+          <Heading
+            color={"#3ed2d5"}
+            ml={"30px"}
+            lineHeight={1.1}
+            fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}
+            className="animated-text">
+           WELCOME TO{' '}
+            NOELAKAN.ID
+          </Heading>
+        </Stack>
+        <Stack
+          bg={'gray.50'}
+          rounded={'xl'}
+          p={{ base: 4, sm: 6, md: 8 }}
+          spacing={{ base: 8 }}
+          maxW={{ lg: 'lg' }}>
+          <Stack spacing={4}>
+            <Heading
+              color={'gray.800'}
+              lineHeight={1.1}
+              fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}
+              textShadow="0 2px 4px rgba(0,0,128, 0.4)">
+             Daftar Akun
+            </Heading>
+          </Stack>
+          <Box as={'form'} mt={10}>
+            <Stack spacing={4}>
+              <Input
+                placeholder="Nama"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
+              <Input
+                placeholder="UserName"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
+              <Input
+                placeholder="firstname@lastname.io"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
+              <Input
+                placeholder="Phone Number"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
+              <Input
+                placeholder="Alamat"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
+              <Input
+                placeholder="Password"
+                bg={'gray.100'}
+                border={0}
+                color={'gray.500'}
+                _placeholder={{
+                  color: 'gray.500',
+                }}
+              />
+              <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
+                Upload Foto
+              </Button>
+            </Stack>
+            <Button
+              fontFamily={'heading'}
+              mt={8}
+              w={'full'}
+              bgColor={"#2799fc"}
+              bgGradient="linear(to-r, red.400,pink.400)"
+              color={'white'}
+              _hover={{
+                bgGradient: 'linear(to-r, red.400,pink.400)',
+                boxShadow: 'xl',
+                
+              }}>
+              Submit
+            </Button>
           </Box>
-          <form onSubmit={handleRegister}>
-            <FormControl p={"10px"}>
-              <Box>
-                <FormLabel>Name</FormLabel>
-                <Input
-                  type="text"
-                  name="fullname"
-                  onChange={handleChange}
-                  style={{
-                    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-                    height: "50px",
-                    width: "400px",
-                  }}
-                />
-              </Box>
-              <Box>
-                <FormLabel>User Name</FormLabel>
-                <Input
-                  type="text"
-                  name="username"
-                  onChange={handleChange}
-                  style={{
-                    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-                    height: "50px",
-                    width: "400px",
-                  }}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  style={{
-                    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-                    height: "50px",
-                    width: "400px",
-                  }}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  style={{
-                    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-                    height: "50px",
-                    width: "400px",
-                  }}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Alamat</FormLabel>
-                <Input
-                  type="text"
-                  name="Alamat"
-                  onChange={handleChange}
-                  style={{
-                    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-                    height: "50px",
-                    width: "400px",
-                  }}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Image</FormLabel>
-                <label
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    cursor: "pointer", // Menambahkan tanda kursor ketika label diklik
-                  }}
-                >
-                  <Input
-                    type="file"
-                    name="image"
-                    onChange={handleChange}
-                    style={{
-                      display: "none", // Sembunyikan input tipe file asli
-                    }}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      padding: "5px",
-                      // border: '1px solid #ccc',
-                      boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
-                      height: "50px",
-                      width: "400px",
-                      // Menambahkan border pada kotak input
-                    }}
-                  >
-                    <AiOutlinePicture
-                      size={40}
-                      style={{ marginRight: "10px" }}
-                    />
-                    <span>Upload Image</span>
-                  </div>
-                </label>
-              </Box>
-              <Box mt={2}>
-                <Button
-                  w={"80"}
-                  borderRadius={20}
-                  bgColor={"white"}
-                  color={"#14003B"}
-                  width={"400px"}
-                  mt={"10px"}
-                  type="submit"
-                >
-                  Create
-                </Button>
-              </Box>
-              <Flex p={4} gap={2}>
-                <Text mt={5}>Already have account?</Text>
-                <Text
-                  color={"white"}
-                  fontWeight={"bold"}
-                  mt={5}
-                  cursor={"pointer"}
-                  onClick={() => navigate("/auth/login")}
-                >
-                  Login
-                </Text>
-              </Flex>
-            </FormControl>
-          </form>
-        </Box>
-      </Box>
-    </>
-  );
+          form
+        </Stack>
+      </Container>
+      <Blur position={'absolute'} top={-10} left={-10} style={{ filter: 'blur(70px)' }} />
+    </Box>
+  )
 }
