@@ -1,20 +1,31 @@
-import { AppDataSource } from "./data-source"
-import { User } from "./entity/User"
+import * as express from "express";
+import { Request, Response } from "express-serve-static-core";
+import { AppDataSource } from "./data-source";
+import router from "./route";
+import "dotenv/config";
 
-AppDataSource.initialize().then(async () => {
+AppDataSource.initialize()
+  .then(async () => {
+    const app = express();
+    const port = 5000;
 
-    console.log("Inserting a new user into the database...")
-    const user = new User()
-    user.firstName = "Timber"
-    user.lastName = "Saw"
-    user.age = 25
-    await AppDataSource.manager.save(user)
-    console.log("Saved a new user with id: " + user.id)
+    var cors = require("cors");
+    // console.log(req)
 
-    console.log("Loading users from the database...")
-    const users = await AppDataSource.manager.find(User)
-    console.log("Loaded users: ", users)
+    app.use(cors());
 
-    console.log("Here you can setup and run express / fastify / any other framework.")
+    // const router = express.Router();
 
-}).catch(error => console.log(error))
+    app.use(express.json());
+    app.use("/api/v1", router);
+    // app.use("/uploads", express.static("uploads"));
+
+    app.get("/", (reg: Request, res: Response) => {
+      res.send("hello world!");
+    });
+
+    app.listen(port, () => {
+      console.log(`server running on http://localhost:${port}`);
+    });
+  })
+  .catch((error) => console.log(error));
