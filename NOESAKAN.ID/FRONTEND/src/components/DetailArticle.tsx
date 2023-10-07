@@ -1,20 +1,5 @@
-<<<<<<< HEAD
-import {
-  Box,
-  Heading,
-  Image,
-  Text,
-  Divider,
-  HStack,
-  useColorModeValue,
-  Container,
-  Button
-} from '@chakra-ui/react';
-import React, { useState } from 'react';
-=======
 import { Box, Heading, Image, Text, Divider, HStack, useColorModeValue, Container, Button } from '@chakra-ui/react';
 import { useState } from 'react';
->>>>>>> 676fac18bd9ddec94fda5c35d6ebf5d768108a72
 
 interface BlogAuthorProps {
   date: Date;
@@ -35,35 +20,10 @@ const BlogAuthor = (props: BlogAuthorProps) => {
 };
 
 const Artikel = () => {
-<<<<<<< HEAD
-  const [showArticle1, setShowArticle1] = useState(false);
-  const [showArticle2, setShowArticle2] = useState(false);
-  const [showArticle3, setShowArticle3] = useState(false);
-  const [showArticle4, setShowArticle4] = useState(false);
-
-  const toggleArticle = (articleNumber: number) => {
-    switch (articleNumber) {
-      case 1:
-        setShowArticle1(!showArticle1);
-        break;
-      case 2:
-        setShowArticle2(!showArticle2);
-        break;
-      case 3:
-        setShowArticle3(!showArticle3);
-        break;
-      case 4:
-        setShowArticle4(!showArticle4);
-        break;
-      default:
-        break;
-    }
-=======
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
->>>>>>> 676fac18bd9ddec94fda5c35d6ebf5d768108a72
   };
 
   return (
@@ -174,14 +134,6 @@ const Artikel = () => {
         flexDirection={{ base: 'column', md: 'row' }}
         alignItems="center" // Tambahkan ini untuk mengatur gambar dan teks ke tengah
       >
-<<<<<<< HEAD
-        <Heading as="h2" fontSize="xl" mb="4">
-          Rekomendasi Artikel untuk Dibaca:
-        </Heading>
-        <HStack spacing="4">
-          {/* Artikel Pertama */}
-          {/* ... (Kode artikel lainnya sesuai kebutuhan Anda) */}
-=======
         <Box
           flex="1"
           width={{ base: '100%', md: '40%' }}
@@ -498,7 +450,6 @@ const Artikel = () => {
               </Button>
             </Box>
           </Box>
->>>>>>> 676fac18bd9ddec94fda5c35d6ebf5d768108a72
         </HStack>
       </Box>
     </Container>
