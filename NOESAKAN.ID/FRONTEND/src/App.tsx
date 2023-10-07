@@ -7,6 +7,7 @@ import Register from "./pages/register";
 import Article from "./components/Article";
 import Home from "./pages/home";
 import CreateStore from "./pages/createStore";
+import StorePage from "./pages/store";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         <Route
             path="/"
             element={<Home />}
+          />
+          <Route
+            path="/MyStore/:id"
+            element={<StorePage />}
           />
            <Route
             path="/create/store"

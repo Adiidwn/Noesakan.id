@@ -40,9 +40,11 @@ export default function SplitScreen() {
               justify={"space-between"}
             >
               <Checkbox>Remember me</Checkbox>
-              <Text color={"black"} align={'center'}>
-                Belum punya akun? <Link color={'blue.400'}>Register</Link>
+              <Stack pt={6}>
+              <Text color={"black"} align={'center'} >
+                Belum punya akun? <Link href="/auth/register" color={'blue.400'}>Register</Link>
               </Text>
+            </Stack>
             </Stack>
             <Box display={"flex"} justifyContent={"flex-end"}>
 
