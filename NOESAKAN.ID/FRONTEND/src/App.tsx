@@ -1,11 +1,9 @@
 
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
-import { Login } from "./pages/login";
-import Register from "./pages/register";
 // import DiscussGrup from "./pages/DiscussGrup";
 import Home from "./pages/home";
 import DetailArticle from "./pages/detailarticle";
+// import Discuss from "./components/Discuss";
 
 
 function App() {
@@ -22,9 +20,15 @@ function App() {
             element={< DetailArticle/>}
           />
         </Routes>
+        {/* <Route
+            path="/discussgrup"
+            element={< Discuss/>}
+          /> */}
+        
       </div>
     </>
   );
 }
+
 
 export default App;

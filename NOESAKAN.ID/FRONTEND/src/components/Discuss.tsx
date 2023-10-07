@@ -12,11 +12,11 @@ import {
   Card,
   Avatar,
 } from '@chakra-ui/react';
-import { FaImage, FaHome, FaProductHunt, FaBook, FaThumbsUp, FaComment, FaShare } from 'react-icons/fa'; // Import ikon gambar
+import { FaImage, FaHome, FaProductHunt, FaBook } from 'react-icons/fa'; // Import ikon gambar
 import { BiComment, BiShareAlt } from 'react-icons/bi';
 import { AiOutlineLike } from 'react-icons/ai';
 
-export default function Article() {
+export default function Discuss() {
   const handleImageClick = () => {
     const fileInput = document.getElementById('fileInput');
     fileInput?.click();
