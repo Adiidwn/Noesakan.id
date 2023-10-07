@@ -63,6 +63,7 @@ export default function SignupCard() {
   async function handleRegister() {
     try {
       const response = await API.post("/auth/register", form);
+      navigate("/auth/login");
       console.log("register berhasil", response);
     } catch (err) {
       console.log(err);
@@ -209,15 +210,16 @@ export default function SignupCard() {
             </Stack>
             <Button
               fontFamily={"heading"}
+
               onClick={handleRegister}
               loadingText="Submitting"
               mt={8}
               w={"full"}
-              bgColor={"#2799fc"}
-              bgGradient="linear(to-r, red.400,pink.400)"
+              bgColor={"blue.800"}
+              bgGradient="linear(to-r, blue.400,blue.800)"
               color={"white"}
               _hover={{
-                bgGradient: "linear(to-r, red.400,pink.400)",
+                bgGradient: "linear(to-r, blue.500,blue.900)",
                 boxShadow: "xl",
               }}>
               Register

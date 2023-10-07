@@ -31,6 +31,7 @@ email: string;
 password: string;
 
 }
+
 export interface IUserLoginOn {
   id?: number;
   fullname: string;

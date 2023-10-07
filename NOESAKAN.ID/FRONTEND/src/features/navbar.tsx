@@ -5,11 +5,13 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@ch
 import { GiCirclingFish } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import './navbar.css';
+import { useNavigate } from '@remix-run/react';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
-
+  
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -25,7 +27,7 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+  
   return (
     <Box>
       <Flex className={`navbar ${isScrolled ? 'scrolled-navbar' : ''}`}>
@@ -95,7 +97,7 @@ export default function Navbar() {
             fontWeight={600}
             color={'white'}
             bg={'blue.900'}
-            href={'#'}
+            href={'/create/store'}
             _hover={{
               bg: 'pink.300',
             }}

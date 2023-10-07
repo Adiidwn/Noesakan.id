@@ -5,12 +5,22 @@ import { Login } from "./pages/login";
 import Register from "./pages/register";
 // import DiscussGrup from "./pages/DiscussGrup";
 import Article from "./components/Article";
+import Home from "./pages/home";
+import CreateStore from "./pages/createStore";
 
 function App() {
   return (
     <>
       <Box>
         <Routes>
+        <Route
+            path="/"
+            element={<Home />}
+          />
+           <Route
+            path="/create/store"
+            element={<CreateStore />}
+          />
           <Route
             path="/auth/login"
             element={!localStorage.token ? <Login /> : <Navigate to="/" />}
