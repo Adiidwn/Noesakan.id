@@ -65,6 +65,7 @@ export function useThreadCard() {
     handleSubmit,
     handleChange,
     fileInputRef,
+    postData,
     // fetchData,
     // thread,
   };

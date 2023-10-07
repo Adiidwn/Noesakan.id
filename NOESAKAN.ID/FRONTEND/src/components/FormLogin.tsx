@@ -64,11 +64,21 @@ const dispatch = useDispatch()
           <Heading fontSize={"7xl"}>Login Noesakan</Heading>
           <FormControl id="email">
             <FormLabel>Email </FormLabel>
-            <Input onChange={handleChange} placeholder="Email Adress" name="email" type="email" />
+            <Input
+              onChange={handleChange}
+              placeholder="Email Adress"
+              name="email"
+              type="email"
+            />
           </FormControl>
           <FormControl id="password">
             <FormLabel>Sandi</FormLabel>
-            <Input onChange={handleChange} placeholder="Password" name="password" type="password" />
+            <Input
+              onChange={handleChange}
+              placeholder="Password"
+              name="password"
+              type="password"
+            />
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -78,13 +88,15 @@ const dispatch = useDispatch()
             >
               <Checkbox>Remember me</Checkbox>
               <Stack pt={6}>
-              <Text color={"black"} align={'center'} >
-                Belum punya akun? <Link href="/auth/register" color={'blue.400'}>Register</Link>
-              </Text>
-            </Stack>
+                <Text color={"black"} align={"center"}>
+                  Belum punya akun?{" "}
+                  <Link href="/auth/register" color={"blue.400"}>
+                    Register
+                  </Link>
+                </Text>
+              </Stack>
             </Stack>
             <Box display={"flex"} justifyContent={"flex-end"}>
-
               <Text color={"blue.500"}>Forgot password?</Text>
             </Box>
             <Button
@@ -104,7 +116,7 @@ const dispatch = useDispatch()
           src={
             "https://images.unsplash.com/photo-1535262412227-85541e910204?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80"
           }
-          style={{ filter: 'brightness(0.7)' }} 
+          style={{ filter: "brightness(0.7)" }}
         />
       </Flex>
     </Stack>

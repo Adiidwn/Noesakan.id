@@ -33,7 +33,8 @@ const Blur = (props: IconProps) => {
       viewBox="0 0 528 560"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+      {...props}
+    >
       <circle cx="71" cy="61" r="111" fill=" #f785ff" />
       <circle cx="244" cy="106" r="139" fill="#fa8cff" />
       <circle cy="291" r="139" fill="#a953ff" />
@@ -67,8 +68,13 @@ export default function FormCreateStore() {
   }
 
   async function handleCreateStore() {
+    const token = localStorage.getItem("token");
     try {
-      const response = await API.post("/store/create", form);
+      const response = await API.post("/store/create", form, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       navigate("/");
       console.log("registrasion Store Success", response);
     } catch (err) {
@@ -94,13 +100,15 @@ export default function FormCreateStore() {
       bgImage={
         "https://images.unsplash.com/photo-1498654200943-1088dd4438ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
       }
-      w={"full"}>
+      w={"full"}
+    >
       <Container
         as={SimpleGrid}
         maxW={"100%"}
         columns={{ base: 1, md: 2 }}
         spacing={{ base: 4, lg: 32 }}
-        py={{ base: 10, sm: 20, lg: 1 }}>
+        py={{ base: 10, sm: 20, lg: 1 }}
+      >
         <Stack spacing={{ base: 10, md: 20 }}>
           <Heading
             color={"blue.800"}
@@ -108,7 +116,8 @@ export default function FormCreateStore() {
             lineHeight={1.1}
             mt={"100px"}
             fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
-            className="animated-text">
+            className="animated-text"
+          >
             WELCOME TO NOESAKAN.ID
           </Heading>
         </Stack>
@@ -117,13 +126,15 @@ export default function FormCreateStore() {
           rounded={"xl"}
           p={{ base: 4, sm: 6, md: 8 }}
           spacing={{ base: 4 }}
-          maxW={{ lg: "lg" }}>
+          maxW={{ lg: "lg" }}
+        >
           <Stack spacing={2}>
             <Heading
               color={"gray.800"}
               lineHeight={1.1}
               fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              textShadow="0 2px 4px rgba(0,0,128, 0.4)">
+              textShadow="0 2px 4px rgba(0,0,128, 0.4)"
+            >
               Daftar Store Noesakan
             </Heading>
           </Stack>
@@ -289,7 +300,8 @@ export default function FormCreateStore() {
                   <Icon
                     float={"right"}
                     fontSize={"30px"}
-                    cursor="pointer"></Icon>
+                    cursor="pointer"
+                  ></Icon>
                 </label>
                 <Input
                   // onChange={handleImageChange}
@@ -312,7 +324,8 @@ export default function FormCreateStore() {
               _hover={{
                 bgGradient: "linear(to-r, blue.500,blue.900)",
                 boxShadow: "xl",
-              }}>
+              }}
+            >
               Buat Toko
             </Button>
             {/* <Stack pt={6}>
