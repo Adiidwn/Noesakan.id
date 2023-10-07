@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Heading, Image, Text, HStack, Tag, SpaceProps, useColorModeValue, Container, VStack } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 interface IBlogTags {
   tags: Array<string>;
@@ -49,12 +50,6 @@ const BlogAuthor = (props: BlogAuthorProps) => {
       display="flex"
       alignItems="center"
     >
-      <Image
-        borderRadius="full"
-        boxSize="40px"
-        src="https://100k-faces.glitch.me/random-image"
-        alt={`Avatar of ${props.name}`}
-      />
       <Text fontWeight="medium">{props.name}</Text>
       <Text>—</Text>
       <Text>{props.date.toLocaleDateString()}</Text>
@@ -113,7 +108,7 @@ const ArticleList = () => {
               >
                 <Image
                   borderRadius="lg"
-                  src={'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'}
+                  src={'https://images.unsplash.com/photo-1535443120147-89aef0b5327a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'}
                   alt="some good alt text"
                   objectFit="contain"
                 />
@@ -141,13 +136,12 @@ const ArticleList = () => {
             justifyContent="center"
             marginTop={{ base: '3', sm: '0' }}
           >
-            <BlogTags tags={['Engineering', 'Product']} />
             <Heading marginTop="1">
               <Text
                 textDecoration="none"
                 _hover={{ textDecoration: 'none' }}
               >
-                Blog article title
+                Manfaat Mengonsumsi Ikan
               </Text>
             </Heading>
             <Text
@@ -156,12 +150,22 @@ const ArticleList = () => {
               color={useColorModeValue('gray.700', 'gray.200')}
               fontSize="lg"
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              Ikan telah lama menjadi bagian penting dari pola makan manusia di seluruh dunia. Selain rasanya yang lezat, ikan juga merupakan sumber nutrisi yang kaya dan memiliki banyak manfaat bagi kesehatan. Berikut adalah beberapa manfaat mengonsumsi ikan yang perlu Anda ketahui:
             </Text>
             <BlogAuthor
-              name="John Doe"
+              name="Noesakan.id"
               date={new Date('2021-04-06T19:01:27Z')}
             />
+            <Link to={'/DetailArticle'}>
+              <Text
+                mt={3}
+                fontStyle={'italic'}
+                fontWeight={'bold'}
+                color={'blue.600'}
+              >
+                Baca selengkapnya...
+              </Text>
+            </Link>
           </Box>
         </Box>
         <Box
@@ -179,13 +183,12 @@ const ArticleList = () => {
             justifyContent="center"
             marginTop={{ base: '3', sm: '0' }}
           >
-            <BlogTags tags={['Engineering', 'Product']} />
             <Heading marginTop="1">
               <Text
                 textDecoration="none"
                 _hover={{ textDecoration: 'none' }}
               >
-                Blog article title
+                Nilai Produksi Rp 2,24 T, Laut Banten Jadi Tambang Investasi Perikanan
               </Text>
             </Heading>
             <Text
@@ -194,13 +197,25 @@ const ArticleList = () => {
               color={useColorModeValue('gray.700', 'gray.200')}
               fontSize="lg"
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              Jakarta - Penjabat (Pj) Gubernur Provinsi Banten Al Muktabar mengatakan Banten memiliki kekayaan alam dan aksesibilitas yang menjadi modal dan daya tarik bagi investor.
             </Text>
             <BlogAuthor
-              name="John Doe"
+              name="Noesakan.id"
               date={new Date('2021-04-06T19:01:27Z')}
             />
+            <Link to={'/DetailArticle'}>
+              <Text
+                mt={3}
+                fontStyle={'italic'}
+                fontWeight={'bold'}
+                color={'blue.600'}
+                scrollBehavior={'auto'}
+              >
+                Baca selengkapnya...
+              </Text>
+            </Link>
           </Box>
+
           <Box
             display="flex"
             flex="1"
@@ -220,7 +235,7 @@ const ArticleList = () => {
               >
                 <Image
                   borderRadius="lg"
-                  src={'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'}
+                  src={'https://images.unsplash.com/photo-1487335414417-ac48b43a8cc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'}
                   alt="some good alt text"
                   objectFit="contain"
                 />

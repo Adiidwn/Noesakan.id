@@ -155,7 +155,7 @@ export default function Testimonials() {
           fontWeight={'medium'}
           color={useColorModeValue('gray.500', 'gray.400')}
         >
-          Sudah lebih dari <chakra.strong color={useColorModeValue('gray.700', 'gray.50')}>10,000+</chakra.strong> pecinta ikan memilih ikan segarnya di sini.
+          Sudah lebih dari <chakra.strong color={useColorModeValue('gray.700', 'gray.50')}>10,000+</chakra.strong> pecinta ikan memilih ikan segarnya di <chakra.strong color={useColorModeValue('gray.700', 'gray.50')}>Noesakan</chakra.strong>.
         </chakra.h2>
       </Box>
       <SimpleGrid
