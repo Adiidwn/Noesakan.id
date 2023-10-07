@@ -6,6 +6,7 @@ import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import Navbar from '../features/navbar';
 import Footer from './footer';
 import StoreProductInStore from './storeProductInStore';
+import FormCreateProduct from '../components/cardProduct copy';
 
 function randomColor() {
   return Math.floor(Math.random() * 2);
@@ -87,7 +88,12 @@ export default function Store() {
             <Box>
               <Image
                 borderRadius={10}
-                src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                minW={"600px"}
+                maxW={"600px"}
+                maxH={"400px"}
+                minH={"400px"}
+                objectFit={"cover"}
+                src="https://www.mongabay.co.id/wp-content/uploads/2020/07/Falahi-Mubarok-Pengaruh-revisi-Kebijakan-ekpor-Lobster-6-scaled.jpg"
               />
             </Box>
             <Box>
@@ -99,13 +105,13 @@ export default function Store() {
                   fontWeight={'bold'}
                   fontSize={'35px'}
                 >
-                  Nama Store
+                  Toko Lobster
                 </Text>
                 <Text
                   fontWeight={'500'}
                   mb={2}
                 >
-                  @username
+                  @LobsterMania
                 </Text>
                 <Text mt={1}>Deskripsi Toko:</Text>
                 <Text
@@ -113,27 +119,13 @@ export default function Store() {
                   textAlign={'justify'}
                   mb={5}
                 >
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fugiat quas modi quisquam temporibus quis error, odit voluptatum totam asperiores rem illum natus magnam molestias, aperiam adipisci at, quo soluta?
-                </Text>
+                  Lobster fresh dari laut papua (fakfak) 
+                </Text> 
                 <Rating
                   rating={data.rating}
                   numReviews={data.numReviews}
                 />
-
-                <Button
-                  w={'50%'}
-                  mt={5}
-                  bgColor={`${colorCode}`}
-                  color={'white'}
-                  rounded={'md'}
-                  _hover={{
-                    transform: 'translateY(-2px)',
-                    boxShadow: 'lg',
-                  }}
-                  onClick={() => setColorCode(colorList[randomColor()])}
-                >
-                  Hubungi Pembeli
-                </Button>
+                  <FormCreateProduct />
               </Flex>
             </Box>
           </Flex>
