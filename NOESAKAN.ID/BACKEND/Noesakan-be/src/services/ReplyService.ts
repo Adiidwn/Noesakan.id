@@ -12,9 +12,11 @@ class ReplyService {
     try {
       const threadId = parseInt(reqQuery.threadId ?? 0);
       const loginSession = reqQuery.loginSession;
+      console.log("ini thread id", threadId);
+      console.log("ini login session", loginSession);
 
       const reply = await this.replyRepository.find({
-        relations: ["user"],
+        relations: ["users"],
         where: {
           threads: {
             id: threadId,
@@ -46,22 +48,70 @@ class ReplyService {
   //   return res.status(200).json(reply);
   // }
 
-  async create(reqBody: any, loginSession: any): Promise<any> {
+  //   async create(reqBody: any, loginSession: any): Promise<any> {
+  //     try {
+  //       const reply = this.replyRepository.create({
+  //         content: reqBody.content,
+  //         users: {
+  //           id: loginSession.id,
+  //         },
+  //         threads: {
+  //           id: reqBody.threadId,
+  //         },
+  //       });
+
+  //       await this.replyRepository.save(reply);
+  //       return reply;
+  //     } catch (err) {
+  //       throw new Error(err.message);
+  //     }
+  //   }
+  // }
+
+  async create(req: Request, res: Response, idStore: string) {
+    const id = parseInt(idStore);
     try {
-      const reply = this.replyRepository.create({
-        content: reqBody.content,
+      const data = req.body;
+      const loginSession = res.locals.loginSession;
+
+      const filename = res.locals.filename;
+
+      cloudinary.config({
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
+      });
+
+      let cloudinaryResponse = undefined;
+
+      if (filename) {
+        cloudinaryResponse = await cloudinary.uploader.upload(
+          "./src/uploads/" + filename
+        );
+      }
+
+      console.log("cloud Res", cloudinaryResponse);
+
+      const store = this.replyRepository.create({
+        content: data.content,
+        threads: {
+          id: id,
+        },
         users: {
           id: loginSession.id,
         },
-        threads: {
-          id: reqBody.threadId,
-        },
       });
 
-      await this.replyRepository.save(reply);
-      return reply;
+      if (cloudinaryResponse !== undefined) {
+        store.image = cloudinaryResponse.secure_url;
+      }
+
+      console.log("ini Store", store);
+
+      const createStore = this.replyRepository.save(store);
+      return res.status(200).json(createStore);
     } catch (err) {
-      throw new Error(err.message);
+      return res.status(500).json({ error: "sorry there was an error", err });
     }
   }
 }

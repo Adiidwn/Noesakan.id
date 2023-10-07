@@ -17,7 +17,7 @@ export default function FormRegister() {
   const navigate = useNavigate();
   return (
     <>
-      <Box m={2} p={2} w={"96"}>
+      <Box m={2} p={2} w={"100%"}>
         <Box m={2} p={2}>
           <Box p={2}>
             <Text

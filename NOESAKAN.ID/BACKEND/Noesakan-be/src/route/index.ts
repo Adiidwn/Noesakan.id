@@ -7,6 +7,8 @@ import StoreController from "../controllers/StoreController";
 import ProductController from "../controllers/ProductController";
 import { upload } from "../middlewares/UploadFile";
 import RatingController from "../controllers/RatingController";
+import RepliesController from "../controllers/RepliesController";
+
 // import service from "../service/service"
 // import { upload } from "../middlewares/uploadFile"
 
@@ -33,6 +35,14 @@ router.post(
 );
 router.delete("/thread/:id", ThreadsController.delete);
 router.patch("/thread/:id", ThreadsController.update);
+
+router.get("/replies", RepliesController.find);
+router.post(
+  "/replies/create",
+  authenticate,
+  upload("image"),
+  RepliesController.create
+);
 
 router.post("/auth/register", AuthController.register);
 // router.get("/auth", AuthController.find);
