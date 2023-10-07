@@ -8,25 +8,28 @@ import {
 } from "typeorm";
 import { Store } from "./Store";
 import { User } from "./User";
+import { Product } from "./Product";
 
 @Entity({ name: "ratings" })
 export class Rating {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  rating: number;
+
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;
 
-  @ManyToOne(() => Store, (store) => store.ratings, {
+  @ManyToOne(() => Product, (product) => product.ratings, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
-  stores: Store;
+  product: Product;
 
-  @OneToOne(() => User, {
+  @ManyToOne(() => User, (user) => user.rating, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
-  @JoinColumn()
   users: User;
 }

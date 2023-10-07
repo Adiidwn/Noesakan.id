@@ -1,6 +1,13 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Replies } from "./Replies";
 import { Thread } from "./Thread";
+import { Rating } from "./Rating";
 
 @Entity({ name: "users" })
 export class User {
@@ -30,6 +37,9 @@ export class User {
 
   @OneToMany(() => Replies, (replies) => replies.users)
   replies: Replies[];
+
+  @OneToMany(() => Rating, (rating) => rating.users)
+  rating: Rating;
 
   // @ManyToOne(() => Store, (store) => store.users)
   // store: Store;

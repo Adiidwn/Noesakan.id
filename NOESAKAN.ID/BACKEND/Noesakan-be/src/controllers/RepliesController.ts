@@ -13,7 +13,12 @@ class ReplyController {
   async create(req: Request, res: Response) {
     try {
       const loginSession = res.locals.loginSession;
-      const response = await ReplyService.create(req.body, loginSession);
+      const idStore = req.query.productId;
+      const response = await ReplyService.create(
+        req.body,
+        loginSession,
+        idStore as string
+      );
       return res.status(200).json(response);
     } catch (err) {
       return res.status(500).json({ error: err.message });

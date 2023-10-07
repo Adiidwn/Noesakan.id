@@ -1,10 +1,10 @@
 export interface IUser {
   id?: number;
   fullname?: string;
-  username?: string;
+  name?: string;
   email?: string;
   password?: string;
-  picture?: string;
+  image?: string;
   description?: string;
 }
 
@@ -24,4 +24,11 @@ export interface IUserLogin {
 export interface IFormDiscuss {
   content: string;
   image: Blob | MediaSource | string;
+}
+
+export interface IGetThreads {
+  content?: string;
+  image?: MediaSource | Blob | string;
+  user?: IUser;
+  createdAt?: Date | string | number;
 }
