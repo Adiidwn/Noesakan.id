@@ -5,6 +5,7 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@ch
 import { GiCirclingFish } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import './navbar.css';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -79,29 +80,38 @@ export default function Navbar() {
           direction={'row'}
           spacing={6}
         >
-          {/* <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}
-          >
-            Sign In
-          </Button> */}
-          <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'blue.900'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Buat toko yuk!
-          </Button>
+          <Link to="/auth/login">
+            <Button
+              as={'a'}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'blue.500'}
+              href={'#'}
+              _hover={{
+                bg: 'pink.300',
+              }}
+            >
+              Login
+            </Button>
+          </Link>
+          <Link to="/auth/login">
+            <Button
+              as={'a'}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'blue.500'}
+              href={'#'}
+              _hover={{
+                bg: 'pink.300',
+              }}
+            >
+              Buat toko yuk!
+            </Button>
+          </Link>
         </Stack>
       </Flex>
 

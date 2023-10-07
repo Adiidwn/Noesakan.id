@@ -2,6 +2,8 @@ import { Avatar, Box, Button, Flex, Text, useColorModeValue } from '@chakra-ui/r
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function randomColor() {
   return Math.floor(Math.random() * 5);
@@ -11,6 +13,8 @@ const colorList: string[] = ['#E53E3E', '#38A169', 'blue.300', '#7661BA', '#ED64
 
 export default function RoomDiscuss() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
+  const navigate = useNavigate();
+
   return (
     <Box
       h={'100vh'}
@@ -20,7 +24,7 @@ export default function RoomDiscuss() {
       <Flex
         h={'100%'}
         px={'150px'}
-        py={10}
+        py={5}
       >
         <Box
           position="relative"
@@ -77,19 +81,21 @@ export default function RoomDiscuss() {
               justifyContent="start"
               alignItems="center"
             >
-              <Button
-                px={8}
-                bg={useColorModeValue('blue.900', 'gray.900')}
-                color={'white'}
-                rounded={'md'}
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg',
-                }}
-                onClick={() => setColorCode(colorList[randomColor()])}
-              >
-                Bergabung
-              </Button>
+              <Link to="/DiscussGrup">
+                <Button
+                  px={8}
+                  bg={useColorModeValue('blue.900', 'gray.900')}
+                  color={'white'}
+                  rounded={'md'}
+                  _hover={{
+                    transform: 'translateY(-2px)',
+                    boxShadow: 'lg',
+                  }}
+                  onClick={() => setColorCode(colorList[randomColor()])}
+                >
+                  Bergabung
+                </Button>
+              </Link>
             </Flex>
           </Flex>
         </Box>
@@ -222,19 +228,21 @@ export default function RoomDiscuss() {
                 </Flex>
               </Flex>
             </Box>
-            <Button
-              w={'30%'}
-              fontStyle={'italic'}
-              bg={useColorModeValue('blue.700', 'gray.900')}
-              color={'white'}
-              rounded={'md'}
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: 'lg',
-              }}
-            >
-              Read more
-            </Button>
+            <Link to="/DiscussGrup">
+              <Button
+                w={'30%'}
+                fontStyle={'italic'}
+                bg={useColorModeValue('blue.700', 'gray.900')}
+                color={'white'}
+                rounded={'md'}
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg',
+                }}
+              >
+                Read more
+              </Button>
+            </Link>
           </Flex>
         </Box>
       </Flex>
