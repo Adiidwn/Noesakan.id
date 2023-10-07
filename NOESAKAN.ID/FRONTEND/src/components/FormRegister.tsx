@@ -2,19 +2,16 @@
 
 import {
   Box,
-  Flex,
   Stack,
   Heading,
-  Text,
   Container,
   Input,
   Button,
   SimpleGrid,
-  Avatar,
-  AvatarGroup,
   useBreakpointValue,
   IconProps,
   Icon,
+  Card,
 } from '@chakra-ui/react'
 
 
@@ -39,6 +36,16 @@ const Blur = (props: IconProps) => {
   )
 };
 
+const handleFileUpload = (event: any) => {
+  const selectedFile = event.target.files[0];
+  console.log('File yang diunggah:', selectedFile);
+};
+
+
+const handleImageClick = () => {
+  const fileInput = document.getElementById('fileInput');
+  fileInput?.click();
+};
 
 
 export default function JoinOurTeam() {
@@ -51,16 +58,54 @@ export default function JoinOurTeam() {
         spacing={{ base: 8, lg: 32 }}
         py={{ base: 10, sm: 20, lg: 32 }}>
         <Stack spacing={{ base: 10, md: 20 }}>
-          <Heading
-            color={"#3ed2d5"}
-            ml={"30px"}
-            lineHeight={1.1}
-            fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}
-            className="animated-text">
-           WELCOME TO{' '}
-            NOELAKAN.ID
-          </Heading>
+        <Heading
+  color={"#3ed2d5"}
+  ml={"30px"}
+  lineHeight={1.1}
+  fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}
+>
+  <span
+    className="animated-text"
+    style={{
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      display: 'inline-block',
+    }}
+  >
+   
+  </span>
+  <span className="noesakan-id falling-text">NOESAKAN.ID</span>
+</Heading>
+
+<style >{`
+ /* CSS */
+ @keyframes falling {
+   0% {
+     transform: translateY(-100px);
+     opacity: 0;
+   }
+   100% {
+     transform: translateY(0);
+     opacity: 1;
+   }
+ }
+ 
+ .falling-text {
+   animation: falling 2s ease-in-out forwards;
+   animation-delay: 1s;
+ }
+ 
+
+ 
+`}</style>
+
+
         </Stack>
+        <Card  
+         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+         bgGradient="linear(to-t, #f06, #0c0, #00f)"
+         bgClip="text"
+         color="transparent">
         <Stack
           bg={'gray.50'}
           rounded={'xl'}
@@ -69,7 +114,7 @@ export default function JoinOurTeam() {
           maxW={{ lg: 'lg' }}>
           <Stack spacing={4}>
             <Heading
-              color={'gray.800'}
+               color={"#3ed2d5"}
               lineHeight={1.1}
               fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}
               textShadow="0 2px 4px rgba(0,0,128, 0.4)">
@@ -132,7 +177,13 @@ export default function JoinOurTeam() {
                   color: 'gray.500',
                 }}
               />
-              <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
+              <Input
+          type="file"
+          id="fileInput"
+          display="none" 
+          onChange={handleFileUpload}
+/>
+              <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}  onClick={handleImageClick}>
                 Upload Foto
               </Button>
             </Stack>
@@ -148,11 +199,12 @@ export default function JoinOurTeam() {
                 boxShadow: 'xl',
                 
               }}>
-              Submit
+              Register
             </Button>
           </Box>
           form
         </Stack>
+        </Card>
       </Container>
       <Blur position={'absolute'} top={-10} left={-10} style={{ filter: 'blur(70px)' }} />
     </Box>
