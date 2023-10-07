@@ -4,28 +4,32 @@ import { Avatar, Box, chakra, Container, Flex, Icon, SimpleGrid, useColorModeVal
 
 const testimonials = [
   {
-    name: 'Brandon P.',
-    role: 'Chief Marketing Officer',
-    content: 'It really saves me time and effort. It is exactly what our business has been lacking. EEZY is the most valuable business resource we have EVER purchased. After using EEZY my business skyrocketed!',
-    avatar: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+    name: 'Bae suzy',
+    role: 'Ceo',
+    content: 'Sangat puas sekali berbelanja di Noesakan. Ikan yang dikirim segar, bisa pesan dalam jumlah banyak dan banyak pilihan supplier nya.',
+    avatar: 'https://lh3.googleusercontent.com/4jOgJB7PXG_YessUX2SKL8EGoTq8o9hiVs5rQXCWf_tS10ikRuXH282gOw95Om2ze1yleHUTIhtn0iJNPEfDKBYQ1BJn84ozZA=w1600-rj',
+    rating: 5,
   },
   {
-    name: 'Krysta B.',
+    name: 'Laura',
     role: 'Entrepreneur',
-    content: "I didn't even need training. We've used EEZY for the last five years. I have gotten at least 50 times the value from EEZY. I made back the purchase price in just 48 hours!",
+    content: 'Website cocok untuk mencari supplier ikan tangan pertama.',
     avatar: 'https://images.unsplash.com/photo-1598550874175-4d0ef436c909?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+    rating: 4,
   },
   {
-    name: 'Darcy L.',
-    role: 'Movie star',
-    content: "Thank you for making it painless, pleasant and most of all, hassle free! I'm good to go. No matter where you go, EEZY is the coolest, most happening thing around! I love EEZY!",
+    name: 'Cristine',
+    role: 'Pengusaha',
+    content: 'Sangat senang berbelanja di sini, tetapi lebih bagus lagi nantinya bisa dilakukan pembayaran lewat web nya. Jadi customer merasa aman apabila berbelanja dalam skala yang lebih banyak.',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80',
+    rating: 3,
   },
   {
     name: 'Daniel T.',
-    role: 'Musician',
-    content: 'I am so pleased with this product. EEZY is both attractive and highly adaptable. Without EEZY, we would have gone bankrupt by now. Thank you for creating this product!',
+    role: 'Marketing',
+    content: 'Lumayan bagus untuk rekomendasi mencari supplier ikan.',
     avatar: 'https://images.unsplash.com/photo-1606513542745-97629752a13b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+    rating: 5,
   },
 ];
 
