@@ -6,8 +6,8 @@ import Register from './pages/register';
 import DetailProduct from './pages/detailProduct';
 import Product from './pages/product';
 import DetailArticle from './pages/detailarticle';
-import ArticleList from './pages/article';
 import Store from './pages/store';
+import Discuss from './components/Discuss';
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
           />
           <Route
             path="/DiscussGrup"
-            element={<ArticleList />}
+            element={<Discuss />}
           />
           <Route
             path="/Product"

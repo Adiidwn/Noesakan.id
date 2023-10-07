@@ -9,7 +9,7 @@ function randomColor() {
   return Math.floor(Math.random() * 5);
 }
 
-const colorList: string[] = ['#E53E3E', '#38A169', 'blue.300', '#7661BA', '#ED64A6'];
+const colorList: string[] = ['#E53E3E', '#38A169', 'blue.300', '#9377EF', '#ED64A6'];
 
 export default function RoomDiscuss() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
