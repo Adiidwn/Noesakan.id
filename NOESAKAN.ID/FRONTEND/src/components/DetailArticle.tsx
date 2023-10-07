@@ -207,6 +207,107 @@ const Artikel = () => {
     </Box>
   </Box>
 </HStack>
+<HStack spacing="4" mt={5}>
+  {/* Artikel Pertama */}
+  <Box
+    maxW="sm"
+    borderWidth="1px"
+    borderRadius="lg"
+    overflow="hidden"
+    boxShadow="md"
+  >
+    <Image
+      src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" // Ganti URL gambar sesuai artikel pertama
+      alt="Gambar Artikel 1"
+      objectFit="cover"
+      h="150px"
+    />
+    <Box p="4">
+      <Text fontWeight="bold">Judul Artikel 1</Text>
+      <Text fontSize="sm" mt="2">
+        Deskripsi artikel pertama yang singkat.
+      </Text>
+      <Button mt="2" size="sm" colorScheme="blue">
+        Baca Selengkapnya
+      </Button>
+    </Box>
+  </Box>
+
+  {/* Artikel Kedua */}
+  <Box
+    maxW="sm"
+    borderWidth="1px"
+    borderRadius="lg"
+    overflow="hidden"
+    boxShadow="md"
+  >
+    <Image
+      src="https://images.unsplash.com/photo-1553603227-2358aabe821e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" // Ganti URL gambar sesuai artikel kedua
+      alt="Gambar Artikel 2"
+      objectFit="cover"
+      h="150px"
+    />
+    <Box p="4">
+      <Text fontWeight="bold">Judul Artikel 2</Text>
+      <Text fontSize="sm" mt="2">
+        Deskripsi artikel kedua yang singkat.
+      </Text>
+      <Button mt="2" size="sm" colorScheme="blue">
+        Baca Selengkapnya
+      </Button>
+    </Box>
+  </Box>
+
+  {/* Artikel Ketiga */}
+  <Box
+    maxW="sm"
+    borderWidth="1px"
+    borderRadius="lg"
+    overflow="hidden"
+    boxShadow="md"
+  >
+    <Image
+      src="https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" // Ganti URL gambar sesuai artikel ketiga
+      alt="Gambar Artikel 3"
+      objectFit="cover"
+      h="150px"
+    />
+    <Box p="4">
+      <Text fontWeight="bold">Judul Artikel 3</Text>
+      <Text fontSize="sm" mt="2">
+        Deskripsi artikel ketiga yang singkat.
+      </Text>
+      <Button mt="2" size="sm" colorScheme="blue">
+        Baca Selengkapnya
+      </Button>
+    </Box>
+  </Box>
+
+  {/* Artikel Keempat */}
+  <Box
+    maxW="sm"
+    borderWidth="1px"
+    borderRadius="lg"
+    overflow="hidden"
+    boxShadow="md"
+  >
+    <Image
+      src="https://images.unsplash.com/photo-1550951298-5c7b95a66bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1933&q=80" // Ganti URL gambar sesuai artikel keempat
+      alt="Gambar Artikel 4"
+      objectFit="cover"
+      h="150px"
+    />
+    <Box p="4">
+      <Text fontWeight="bold">Judul Artikel 4</Text>
+      <Text fontSize="sm" mt="2">
+        Deskripsi artikel keempat yang singkat.
+      </Text>
+      <Button mt="2" size="sm" colorScheme="blue">
+        Baca Selengkapnya
+      </Button>
+    </Box>
+  </Box>
+</HStack>
       </Box>
       </Box>
     </Container>
