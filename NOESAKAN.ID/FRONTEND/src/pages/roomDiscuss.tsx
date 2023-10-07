@@ -13,7 +13,6 @@ const colorList: string[] = ['#E53E3E', '#38A169', 'blue.300', '#9377EF', '#ED64
 
 export default function RoomDiscuss() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
-  const navigate = useNavigate();
 
   return (
     <Box
