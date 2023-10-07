@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+} from "typeorm";
 import { Store } from "./Store";
+import { Rating } from "./Rating";
 
 @Entity({ name: "products" })
 export class Product {
@@ -29,4 +36,7 @@ export class Product {
     onUpdate: "CASCADE",
   })
   stores: Store;
+
+  @OneToMany(() => Rating, (rating) => rating.rating)
+  ratings: Rating[];
 }

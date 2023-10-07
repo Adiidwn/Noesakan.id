@@ -61,7 +61,4 @@ export class Store {
   // @OneToOne(() => User, (user) => user.stores, { cascade: true })
   // @JoinColumn()
   // users: User;
-
-  @OneToMany(() => Rating, (rating) => rating.stores)
-  ratings: Rating[];
 }

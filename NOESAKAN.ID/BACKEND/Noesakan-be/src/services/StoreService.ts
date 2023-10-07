@@ -35,9 +35,9 @@ class StoreService {
       const filename = res.locals.filename;
 
       cloudinary.config({
-        cloud_name: "dlcgwbdtv",
-        api_key: "361789865221418",
-        api_secret: "SSAfZgIMCIMpo1E6GX96tbgUn-g",
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
       });
 
       let cloudinaryResponse = undefined;
@@ -112,9 +112,9 @@ class StoreService {
       const filename = res.locals.filename;
 
       cloudinary.config({
-        cloud_name: "dlcgwbdtv",
-        api_key: "361789865221418",
-        api_secret: "SSAfZgIMCIMpo1E6GX96tbgUn-g",
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
       });
 
       let cloudinaryResponse = undefined;

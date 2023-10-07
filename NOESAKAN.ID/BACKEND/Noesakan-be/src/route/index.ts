@@ -6,6 +6,7 @@ import { authenticate } from "../middlewares/Auth";
 import StoreController from "../controllers/StoreController";
 import ProductController from "../controllers/ProductController";
 import { upload } from "../middlewares/UploadFile";
+import RatingController from "../controllers/RatingController";
 // import service from "../service/service"
 // import { upload } from "../middlewares/uploadFile"
 
@@ -61,6 +62,9 @@ router.post(
   upload("image"),
   ProductController.create
 );
+
+router.get("/rating", RatingController.find);
+router.post("/rating/create", authenticate, RatingController.create);
 
 // router.get("/reply", authenticate, ReplyController.find);
 // router.post("/reply", authenticate, ReplyController.create);
