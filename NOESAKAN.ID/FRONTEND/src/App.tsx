@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 
 function App() {
