@@ -3,22 +3,29 @@
 import {
   Box,
   Button,
-  Container,
   FormControl,
   FormLabel,
-  Heading,
   Icon,
   IconProps,
   Input,
   InputGroup,
-  SimpleGrid,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
   Stack,
-  useBreakpointValue
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../lib/api";
 import { IProducts } from "../interfaces/Product";
+import API from "../lib/api";
+import UseProductCreate from "../features/Product/useProductCreate";
 
 const Blur = (props: IconProps) => {
   return (
@@ -29,7 +36,8 @@ const Blur = (props: IconProps) => {
       viewBox="0 0 528 560"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+      {...props}
+    >
       <circle cx="71" cy="61" r="111" fill=" #f785ff" />
       <circle cx="244" cy="106" r="139" fill="#fa8cff" />
       <circle cy="291" r="139" fill="#a953ff" />
@@ -41,30 +49,9 @@ const Blur = (props: IconProps) => {
   );
 };
 
-export default function FormCreateProducts() {
-  const [form, setForm] = useState<IProducts>({
-    productName: "",
-    price: "",
-    image: "",
-    description: "",
-    stock: "",
-  });
-
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  async function handleCreateProduct() {
-    try {
-      const response = await API.post("/store/create", form);
-      console.log("registrasion Store Success", response);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+export default function FormCreateProduct() {
+  const { form, handleChange, handleSubmit, handleCreateProduct } =
+    UseProductCreate();
   // async function handleImageChange(event: ChangeEvent<HTMLInputElement>) {
   //   const file = event.target.files?.[0]
   //   if (file){
@@ -78,179 +65,132 @@ export default function FormCreateProducts() {
 
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <Box
-      position={"relative"}
-      objectFit={"cover"}
-      bgImage={
-        "https://images.unsplash.com/photo-1498654200943-1088dd4438ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-      }
-      w={"full"}>
-      <Container
-        as={SimpleGrid}
-        maxW={"100%"}
-        columns={{ base: 1, md: 2 }}
-        spacing={{ base: 4, lg: 32 }}
-        py={{ base: 10, sm: 20, lg: 1 }}>
-        <Stack spacing={{ base: 10, md: 20 }}>
-          <Heading
-            color={"blue.800"}
-            ml={"30px"}
-            lineHeight={1.1}
-            mt={"100px"}
-            fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
-            className="animated-text">
-            WELCOME TO NOESAKAN.ID
-          </Heading>
-        </Stack>
-        <Stack
-          bg={"gray.50"}
-          rounded={"xl"}
-          p={{ base: 4, sm: 6, md: 8 }}
-          spacing={{ base: 4 }}
-          maxW={{ lg: "lg" }}>
-          <Stack spacing={2}>
-            <Heading
-              color={"gray.800"}
-              lineHeight={1.1}
-              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              textShadow="0 2px 4px rgba(0,0,128, 0.4)">
-              Buat Product
-            </Heading>
-          </Stack>
-          <Box as={"form"} mt={1}>
-            <Stack spacing={2}>
-              <FormControl id="productName" isRequired>
-                <FormLabel color={"black"} ml={"10px"}>
-                  Nama Product
-                </FormLabel>
-                <Input
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
+    <Popover>
+      <PopoverTrigger>
+        <Button>Jual Product</Button>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent>
+          <PopoverArrow />
+          {/* <PopoverHeader>Jual Product</PopoverHeader> */}
+          <PopoverCloseButton />
+          <PopoverBody>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <Box mt={1}>
+                <Stack spacing={2}>
+                  <FormControl id="productName" isRequired>
+                    <FormLabel color={"black"} ml={"10px"}>
+                      Nama Product
+                    </FormLabel>
+                    <Input
+                      bg={"gray.100"}
+                      border={0}
+                      color={"gray.500"}
+                      _placeholder={{
+                        color: "gray.500",
+                      }}
+                      placeholder="Product Name"
+                      type="text"
+                      name="productName"
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                  <FormControl id="price" isRequired>
+                    <FormLabel color={"black"} ml={"10px"}>
+                      Harga
+                    </FormLabel>
+                    <Input
+                      bg={"gray.100"}
+                      border={0}
+                      color={"gray.500"}
+                      _placeholder={{
+                        color: "gray.500",
+                      }}
+                      placeholder="Price"
+                      type="text"
+                      name="price"
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                  <FormControl id="description" isRequired>
+                    <FormLabel color={"black"} ml={"10px"}>
+                      Deskripsi
+                    </FormLabel>
+                    <Input
+                      bg={"gray.100"}
+                      border={0}
+                      color={"gray.500"}
+                      _placeholder={{
+                        color: "gray.500",
+                      }}
+                      placeholder="Description"
+                      type="text"
+                      name="description"
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                  <FormControl id="stock" isRequired>
+                    <FormLabel color={"black"} ml={"10px"}>
+                      Stock
+                    </FormLabel>
+                    <InputGroup>
+                      <Input
+                        bg={"gray.100"}
+                        border={0}
+                        color={"gray.500"}
+                        _placeholder={{
+                          color: "gray.500",
+                        }}
+                        placeholder="Stock"
+                        name="stock"
+                        onChange={handleChange}
+                      />
+                    </InputGroup>
+                  </FormControl>
+                  <Box>
+                    <label htmlFor="img">
+                      <Icon
+                        float={"right"}
+                        fontSize={"30px"}
+                        cursor="pointer"
+                      ></Icon>
+                    </label>
+                    <Input
+                      onChange={handleChange}
+                      name="image"
+                      type="file"
+                      id="img"
+                      hidden
+                    />
+                  </Box>
+                </Stack>
+                <Button
+                  fontFamily={"heading"}
+                  type="submit"
+                  // loadingText="Submitting"
+                  mt={8}
+                  w={"full"}
+                  bgColor={"blue.800"}
+                  bgGradient="linear(to-r, blue.400,blue.800)"
+                  color={"white"}
+                  _hover={{
+                    bgGradient: "linear(to-r, blue.500,blue.900)",
+                    boxShadow: "xl",
                   }}
-                  placeholder="Product Name"
-                  type="text"
-                  name="productName"
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl id="price" isRequired>
-                <FormLabel color={"black"} ml={"10px"}>
-                  Harga
-                </FormLabel>
-                <Input
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                  placeholder="Price"
-                  type="text"
-                  name="price"
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl id="description" isRequired>
-                <FormLabel color={"black"} ml={"10px"}>
-                  Deskripsi
-                </FormLabel>
-                <Input
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                  placeholder="Description"
-                  type="text"
-                  name="description"
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl id="stock" isRequired>
-                <FormLabel color={"black"} ml={"10px"}>
-                  Stock
-                </FormLabel>
-                <InputGroup>
-                  <Input
-                    bg={"gray.100"}
-                    border={0}
-                    color={"gray.500"}
-                    _placeholder={{
-                      color: "gray.500",
-                    }}
-                    placeholder="Stock"
-                    name="stock"
-                    onChange={handleChange}
-                  />
-                </InputGroup>
-              </FormControl>
-              <FormControl id="bankAccount" isRequired>
-                <FormLabel color={"black"} ml={"10px"}>
-                  Bank Akun
-                </FormLabel>
-                <Input
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                  placeholder="Bank Account"
-                  type="number"
-                  name="bankAccount"
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <Box>
-                <label htmlFor="img">
-                  <Icon
-                    float={"right"}
-                    fontSize={"30px"}
-                    cursor="pointer"></Icon>
-                </label>
-                <Input
-                  // onChange={handleImageChange}
-                  name="file"
-                  type="file"
-                  id="img"
-                  hidden
-                />
-              </Box>
-            </Stack>
-            <Button
-              fontFamily={"heading"}
-              onClick={handleCreateProduct}
-              loadingText="Submitting"
-              mt={8}
-              w={"full"}
-              bgColor={"blue.800"}
-              bgGradient="linear(to-r, blue.400,blue.800)"
-              color={"white"}
-              _hover={{
-                bgGradient: "linear(to-r, blue.500,blue.900)",
-                boxShadow: "xl",
-              }}>
-              Buat Toko
-            </Button>
-            {/* <Stack pt={6}>
+                >
+                  Jual Product
+                </Button>
+                {/* <Stack pt={6}>
               <Text color={"black"} align={'center'} onClick={()=> navigate("/auth/login")}>
-                Sudah punya akun? <Link color={'blue.400'}>Login</Link>
+              Sudah punya akun? <Link color={'blue.400'}>Login</Link>
               </Text>
             </Stack> */}
-          </Box>
-          form
-        </Stack>
-      </Container>
-      <Blur
-        position={"absolute"}
-        top={-10}
-        left={-10}
-        style={{ filter: "blur(70px)" }}
-      />
-    </Box>
+              </Box>
+            </form>
+          </PopoverBody>
+          {/* <PopoverFooter>This is the footer</PopoverFooter> */}
+        </PopoverContent>
+      </Portal>
+    </Popover>
   );
 }

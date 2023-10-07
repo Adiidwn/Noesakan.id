@@ -44,6 +44,7 @@ export default function Article() {
       console.error({ error: "salah ya ni" });
     }
   }
+  console.log(thread);
 
   useEffect(() => {
     fetchData();

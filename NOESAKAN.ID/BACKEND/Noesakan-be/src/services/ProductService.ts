@@ -14,7 +14,14 @@ class ProductService {
   async find(reqQuery?: any, loginSession?: any) {
     try {
       const product = await this.productRepository.find({
-        relations: ["stores, users"],
+        where: {
+          stores: {
+            users: {
+              id: loginSession.id,
+            },
+          },
+        },
+        relations: ["stores"],
         take: 10,
         order: {
           id: "DESC",
@@ -27,6 +34,7 @@ class ProductService {
         stock: element.stock,
         image: element.image,
         createdAt: element.createdAt,
+        store: element.stores,
         // stores: element.stores.name,
         // likesCount: element.likes.length,
         // isLiked: element.likes.some((like:any) => like.user.is === loginSession.id),
@@ -43,7 +51,7 @@ class ProductService {
           id: id,
         },
 
-        relations: ["stores, users"],
+        // relations: ["stores, users"],
       });
       return {
         id: product.id,
@@ -85,7 +93,7 @@ class ProductService {
 
       let cloudinaryResponse = undefined;
 
-      const cloudinaryID = cloudinary.config({
+      cloudinary.config({
         cloud_name: process.env.CLOUD_NAME,
         api_key: process.env.API_KEY,
         api_secret: process.env.API_SECRET,

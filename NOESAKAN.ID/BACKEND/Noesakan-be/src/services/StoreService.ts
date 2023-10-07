@@ -80,11 +80,14 @@ class StoreService {
 
   async findOne(req: Request, res: Response) {
     try {
-      const id = parseInt(req.params.id);
+      const loginSession = res.locals.loginSession;
+      // const id = parseInt(req.params.id);
       const threads = await this.storeRepository.findOne({
-        relations: ["user", "replies", "likes"],
+        // relations: ["user", "replies", "likes"],
         where: {
-          id: id,
+          users: {
+            id: loginSession.id,
+          },
         },
       });
 

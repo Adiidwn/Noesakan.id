@@ -4,7 +4,7 @@ import ProductService from "../services/ProductService";
 class ProductController {
   async find(req: Request, res: Response) {
     try {
-      const response = await ProductService.find(req.query);
+      const response = await ProductService.find(req, res);
       return res.status(200).json(response);
     } catch (err) {
       return res.status(500).json({ error: err.message });
