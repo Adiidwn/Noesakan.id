@@ -22,8 +22,13 @@ import { IGetThreads } from "../features/interface/user";
 import moment from "moment";
 
 export default function Article() {
-  const { handleButtonClick, handleSubmit, handleChange, fileInputRef } =
-    useThreadCard();
+  const {
+    handleButtonClick,
+    handleSubmit,
+    handleChange,
+    fileInputRef,
+    postData,
+  } = useThreadCard();
 
   const [thread, setThread] = useState<IGetThreads[]>([]);
 
@@ -42,7 +47,7 @@ export default function Article() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [postData]);
 
   return (
     <Box>
@@ -68,7 +73,7 @@ export default function Article() {
                 borderRight="2px solid gray"
               >
                 {/* Menu Sidebar */}
-                <Stack mt={5} spacing={2}>
+                <Stack mt={5} spacing={2} mr={5}>
                   <MenuItem icon={<FaHome />} text="Beranda" />
                   <MenuItem icon={<FaProductHunt />} text="Produk" />
                   <MenuItem icon={<FaBook />} text="Artikel" />
@@ -77,7 +82,7 @@ export default function Article() {
             </Box>
 
             {/* Konten Utama (tengah) */}
-            <Box flex="1" p={6} w={"50%"}>
+            <Box flex="1" p={6} w={["100%", "100%", "50%"]}>
               {/* Input Update Status */}
               <Card height={"100px"} bgColor={"white"} p={5}>
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
