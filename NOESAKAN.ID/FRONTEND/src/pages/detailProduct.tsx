@@ -9,6 +9,7 @@ import Testimonials from "./testimonials";
 import Footer from "./footer";
 import API from "../lib/api";
 import { Link, useParams } from "react-router-dom";
+import Product from "./product";
 
 function randomColor() {
   return Math.floor(Math.random() * 2);
@@ -75,20 +76,8 @@ export default function DetailProduct() {
     }
   }
 
-  const [productAll, setProductAll] = useState<any>([]);
-
-  async function fetchDataAll() {
-    try {
-      const res = await API.get("/product");
-      setProductAll(res.data);
-    } catch (error) {
-      console.error({ error: "salah ya ni" });
-    }
-  }
-
   useEffect(() => {
     fetchData();
-    fetchDataAll();
   }, []);
   return (
     <>
@@ -107,7 +96,7 @@ export default function DetailProduct() {
                 src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=8"
               />
             </Box>
-            <Box>
+            <Box id="product">
               <Flex flexDirection={"column"} pt={5}>
                 <Text fontWeight={"bold"} fontSize={"35px"}>
                   {product?.productName}
@@ -145,7 +134,8 @@ export default function DetailProduct() {
               </Flex>
             </Box>
           </Flex>
-          <ProductInDetail />
+          <Product />
+          {/* <ProductInDetail /> */}
           <Testimonials />
           <Footer />
         </Box>

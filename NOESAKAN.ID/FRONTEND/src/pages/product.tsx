@@ -133,7 +133,7 @@ export default function Product() {
               h={"350px"}
               borderRadius={10}
             >
-              <Link to={`/productDetail/${item?.id}`}>
+              <Link to={`/productDetail/${item?.id}/#product`}>
                 <Flex flexDirection={"column"}>
                   <Box width={"280px"} height={"250px"}>
                     <Image
