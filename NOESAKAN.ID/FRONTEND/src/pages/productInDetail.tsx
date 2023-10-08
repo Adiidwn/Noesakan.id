@@ -81,10 +81,11 @@ export default function ProductInDetail() {
         <Grid
           templateColumns="repeat(4, 1fr)"
           gap={6}
+          pt={10}
           px={10}
         >
           <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
+            boxShadow={'xl'}
             h={'350px'}
             borderRadius={10}
           >
@@ -99,7 +100,7 @@ export default function ProductInDetail() {
                   objectFit={'cover'}
                   h={'100%'}
                   w={'100%'}
-                  src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                  src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
                 />
               </Box>
               <Flex
@@ -116,9 +117,9 @@ export default function ProductInDetail() {
                     fontWeight="bold"
                     color={'blue.900'}
                   >
-                    Ikan Cupang
+                    Ikan Botan
                   </Text>
-                  <Text>Rp.39.000/kg</Text>
+                  <Text>Rp.24.000/kg</Text>
                 </Flex>
                 <Text>Depok, Jawa Barat</Text>
                 <Rating
@@ -129,7 +130,7 @@ export default function ProductInDetail() {
             </Flex>
           </Box>
           <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
+            boxShadow={'xl'}
             h={'350px'}
             borderRadius={10}
           >
@@ -144,7 +145,7 @@ export default function ProductInDetail() {
                   objectFit={'cover'}
                   h={'100%'}
                   w={'100%'}
-                  src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+                  src="https://images.unsplash.com/photo-1553659971-f01207815844?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3JhYnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
                 />
               </Box>
               <Flex
@@ -161,9 +162,189 @@ export default function ProductInDetail() {
                     fontWeight="bold"
                     color={'blue.900'}
                   >
-                    Ikan Cupang
+                    Kepiting
                   </Text>
-                  <Text>Rp.39.000/kg</Text>
+                  <Text>Rp.80.000/kg</Text>
+                </Flex>
+                <Text>Jakarta</Text>
+                <Rating
+                  rating={data.rating}
+                  numReviews={data.numReviews}
+                />
+              </Flex>
+            </Flex>
+          </Box>
+          <Box
+            boxShadow={'xl'}
+            h={'350px'}
+            borderRadius={10}
+          >
+            <Flex flexDirection={'column'}>
+              <Box
+                width={'280px'}
+                height={'250px'}
+              >
+                <Image
+                  borderTopRightRadius={10}
+                  borderTopLeftRadius={10}
+                  objectFit={'cover'}
+                  h={'100%'}
+                  w={'100%'}
+                  src="https://images.unsplash.com/photo-1623910270365-9b45727235c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3F1aWR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60"
+                />
+              </Box>
+              <Flex
+                p={2}
+                flexDirection={'column'}
+              >
+                <Flex
+                  flexDirection={'row'}
+                  alignItems={'center'}
+                  justifyContent={'space-between'}
+                >
+                  <Text
+                    fontSize={'23px'}
+                    fontWeight="bold"
+                    color={'blue.900'}
+                  >
+                    Cumi Segar
+                  </Text>
+                  <Text>Rp.45.000/kg</Text>
+                </Flex>
+                <Text>Bandung, Jawa Barat</Text>
+                <Rating
+                  rating={data.rating}
+                  numReviews={data.numReviews}
+                />
+              </Flex>
+            </Flex>
+          </Box>
+          <Box
+            boxShadow={'xl'}
+            h={'350px'}
+            borderRadius={10}
+          >
+            <Flex flexDirection={'column'}>
+              <Box
+                width={'280px'}
+                height={'250px'}
+              >
+                <Image
+                  borderTopRightRadius={10}
+                  borderTopLeftRadius={10}
+                  objectFit={'cover'}
+                  h={'100%'}
+                  w={'100%'}
+                  src="https://images.unsplash.com/photo-1603590179985-5f531578a7d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aWthbiUyMHBhdGlufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60"
+                />
+              </Box>
+              <Flex
+                p={2}
+                flexDirection={'column'}
+              >
+                <Flex
+                  flexDirection={'row'}
+                  alignItems={'center'}
+                  justifyContent={'space-between'}
+                >
+                  <Text
+                    fontSize={'23px'}
+                    fontWeight="bold"
+                    color={'blue.900'}
+                  >
+                    Ikan Patin
+                  </Text>
+                  <Text>Rp.32.000/kg</Text>
+                </Flex>
+                <Text>Bogor, Jawa Barat</Text>
+                <Rating
+                  rating={data.rating}
+                  numReviews={data.numReviews}
+                />
+              </Flex>
+            </Flex>
+          </Box>
+          <Box
+            boxShadow={'xl'}
+            h={'350px'}
+            borderRadius={10}
+          >
+            <Flex flexDirection={'column'}>
+              <Box
+                width={'280px'}
+                height={'250px'}
+              >
+                <Image
+                  borderTopRightRadius={10}
+                  borderTopLeftRadius={10}
+                  objectFit={'cover'}
+                  h={'100%'}
+                  w={'100%'}
+                  src="https://images.unsplash.com/photo-1585545335512-1e43f40d4999?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG9ic3RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                />
+              </Box>
+              <Flex
+                p={2}
+                flexDirection={'column'}
+              >
+                <Flex
+                  flexDirection={'row'}
+                  alignItems={'center'}
+                  justifyContent={'space-between'}
+                >
+                  <Text
+                    fontSize={'23px'}
+                    fontWeight="bold"
+                    color={'blue.900'}
+                  >
+                    King Lobster
+                  </Text>
+                  <Text>Rp.120.000/kg</Text>
+                </Flex>
+                <Text>Jakarta</Text>
+                <Rating
+                  rating={data.rating}
+                  numReviews={data.numReviews}
+                />
+              </Flex>
+            </Flex>
+          </Box>
+          <Box
+            boxShadow={'xl'}
+            h={'350px'}
+            borderRadius={10}
+          >
+            <Flex flexDirection={'column'}>
+              <Box
+                width={'280px'}
+                height={'250px'}
+              >
+                <Image
+                  borderTopRightRadius={10}
+                  borderTopLeftRadius={10}
+                  objectFit={'cover'}
+                  h={'100%'}
+                  w={'100%'}
+                  src="https://media.istockphoto.com/id/1294862421/id/foto/udang-mentah-di-piring-dari-dekat.jpg?s=612x612&w=0&k=20&c=ApjIdkJ53PwuLApycke3o2jx26BAlqeSSf3wGez4ctg="
+                />
+              </Box>
+              <Flex
+                p={2}
+                flexDirection={'column'}
+              >
+                <Flex
+                  flexDirection={'row'}
+                  alignItems={'center'}
+                  justifyContent={'space-between'}
+                >
+                  <Text
+                    fontSize={'23px'}
+                    fontWeight="bold"
+                    color={'blue.900'}
+                  >
+                    Udang Segar
+                  </Text>
+                  <Text>Rp.70.000/kg</Text>
                 </Flex>
                 <Text>Depok, Jawa Barat</Text>
                 <Rating
@@ -174,7 +355,7 @@ export default function ProductInDetail() {
             </Flex>
           </Box>
           <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
+            boxShadow={'xl'}
             h={'350px'}
             borderRadius={10}
           >
@@ -208,9 +389,9 @@ export default function ProductInDetail() {
                   >
                     Ikan Cupang
                   </Text>
-                  <Text>Rp.39.000/kg</Text>
+                  <Text>Rp.25.000/kg</Text>
                 </Flex>
-                <Text>Depok, Jawa Barat</Text>
+                <Text>Jakarta Selatan</Text>
                 <Rating
                   rating={data.rating}
                   numReviews={data.numReviews}
@@ -219,7 +400,7 @@ export default function ProductInDetail() {
             </Flex>
           </Box>
           <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
+            boxShadow={'xl'}
             h={'350px'}
             borderRadius={10}
           >
@@ -234,7 +415,7 @@ export default function ProductInDetail() {
                   objectFit={'cover'}
                   h={'100%'}
                   w={'100%'}
-                  src="https://images.unsplash.com/photo-1497671954146-59a89ff626ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  src="https://images.unsplash.com/photo-1605493725784-585f8d90fe82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aWthbiUyMGd1cmFtZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
                 />
               </Box>
               <Flex
@@ -251,191 +432,11 @@ export default function ProductInDetail() {
                     fontWeight="bold"
                     color={'blue.900'}
                   >
-                    Ikan Cupang
+                    Ikan Gurame
                   </Text>
-                  <Text>Rp.39.000/kg</Text>
+                  <Text>Rp.33.000/kg</Text>
                 </Flex>
-                <Text>Depok, Jawa Barat</Text>
-                <Rating
-                  rating={data.rating}
-                  numReviews={data.numReviews}
-                />
-              </Flex>
-            </Flex>
-          </Box>
-          <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
-            h={'350px'}
-            borderRadius={10}
-          >
-            <Flex flexDirection={'column'}>
-              <Box
-                width={'280px'}
-                height={'250px'}
-              >
-                <Image
-                  borderTopRightRadius={10}
-                  borderTopLeftRadius={10}
-                  objectFit={'cover'}
-                  h={'100%'}
-                  w={'100%'}
-                  src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
-                />
-              </Box>
-              <Flex
-                p={2}
-                flexDirection={'column'}
-              >
-                <Flex
-                  flexDirection={'row'}
-                  alignItems={'center'}
-                  justifyContent={'space-between'}
-                >
-                  <Text
-                    fontSize={'23px'}
-                    fontWeight="bold"
-                    color={'blue.900'}
-                  >
-                    Ikan Cupang
-                  </Text>
-                  <Text>Rp.39.000/kg</Text>
-                </Flex>
-                <Text>Depok, Jawa Barat</Text>
-                <Rating
-                  rating={data.rating}
-                  numReviews={data.numReviews}
-                />
-              </Flex>
-            </Flex>
-          </Box>
-          <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
-            h={'350px'}
-            borderRadius={10}
-          >
-            <Flex flexDirection={'column'}>
-              <Box
-                width={'280px'}
-                height={'250px'}
-              >
-                <Image
-                  borderTopRightRadius={10}
-                  borderTopLeftRadius={10}
-                  objectFit={'cover'}
-                  h={'100%'}
-                  w={'100%'}
-                  src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
-                />
-              </Box>
-              <Flex
-                p={2}
-                flexDirection={'column'}
-              >
-                <Flex
-                  flexDirection={'row'}
-                  alignItems={'center'}
-                  justifyContent={'space-between'}
-                >
-                  <Text
-                    fontSize={'23px'}
-                    fontWeight="bold"
-                    color={'blue.900'}
-                  >
-                    Ikan Cupang
-                  </Text>
-                  <Text>Rp.39.000/kg</Text>
-                </Flex>
-                <Text>Depok, Jawa Barat</Text>
-                <Rating
-                  rating={data.rating}
-                  numReviews={data.numReviews}
-                />
-              </Flex>
-            </Flex>
-          </Box>
-          <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
-            h={'350px'}
-            borderRadius={10}
-          >
-            <Flex flexDirection={'column'}>
-              <Box
-                width={'280px'}
-                height={'250px'}
-              >
-                <Image
-                  borderTopRightRadius={10}
-                  borderTopLeftRadius={10}
-                  objectFit={'cover'}
-                  h={'100%'}
-                  w={'100%'}
-                  src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1894&q=80"
-                />
-              </Box>
-              <Flex
-                p={2}
-                flexDirection={'column'}
-              >
-                <Flex
-                  flexDirection={'row'}
-                  alignItems={'center'}
-                  justifyContent={'space-between'}
-                >
-                  <Text
-                    fontSize={'23px'}
-                    fontWeight="bold"
-                    color={'blue.900'}
-                  >
-                    Ikan Cupang
-                  </Text>
-                  <Text>Rp.39.000/kg</Text>
-                </Flex>
-                <Text>Depok, Jawa Barat</Text>
-                <Rating
-                  rating={data.rating}
-                  numReviews={data.numReviews}
-                />
-              </Flex>
-            </Flex>
-          </Box>
-          <Box
-            boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
-            h={'350px'}
-            borderRadius={10}
-          >
-            <Flex flexDirection={'column'}>
-              <Box
-                width={'280px'}
-                height={'250px'}
-              >
-                <Image
-                  borderTopRightRadius={10}
-                  borderTopLeftRadius={10}
-                  objectFit={'cover'}
-                  h={'100%'}
-                  w={'100%'}
-                  src="https://images.unsplash.com/photo-1497671954146-59a89ff626ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                />
-              </Box>
-              <Flex
-                p={2}
-                flexDirection={'column'}
-              >
-                <Flex
-                  flexDirection={'row'}
-                  alignItems={'center'}
-                  justifyContent={'space-between'}
-                >
-                  <Text
-                    fontSize={'23px'}
-                    fontWeight="bold"
-                    color={'blue.900'}
-                  >
-                    Ikan Cupang
-                  </Text>
-                  <Text>Rp.39.000/kg</Text>
-                </Flex>
-                <Text>Depok, Jawa Barat</Text>
+                <Text>Bogor, Jawa Barat</Text>
                 <Rating
                   rating={data.rating}
                   numReviews={data.numReviews}

@@ -85,10 +85,16 @@ export default function DetailProduct() {
             p={10}
             gap={10}
           >
-            <Box>
+            <Box
+              height={'400px'}
+              width={'650px'}
+            >
               <Image
+                objectFit={'cover'}
+                h={'100%'}
+                w={'100%'}
                 borderRadius={10}
-                src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=8"
               />
             </Box>
             <Box>
@@ -100,14 +106,14 @@ export default function DetailProduct() {
                   fontWeight={'bold'}
                   fontSize={'35px'}
                 >
-                  Ikan Cupang
+                  Ikan Botan
                 </Text>
                 <Text
                   fontSize={'23px'}
                   fontWeight="bold"
                   color="white"
                 >
-                  Rp.13.000/Kg
+                  Rp.24.000/Kg
                 </Text>
                 <Text
                   fontWeight={'500'}
