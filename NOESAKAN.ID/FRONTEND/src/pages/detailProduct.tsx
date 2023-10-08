@@ -85,7 +85,7 @@ export default function DetailProduct() {
         backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 255, 0.2))`}
       >
         <Navbar />
-        <Box pt={10}>
+        <Box pt={10} id="product">
           <Flex p={10} gap={10}>
             <Box height={"400px"} width={"650px"}>
               <Image
@@ -96,7 +96,7 @@ export default function DetailProduct() {
                 src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=8"
               />
             </Box>
-            <Box id="product">
+            <Box>
               <Flex flexDirection={"column"} pt={5}>
                 <Text fontWeight={"bold"} fontSize={"35px"}>
                   {product?.productName}

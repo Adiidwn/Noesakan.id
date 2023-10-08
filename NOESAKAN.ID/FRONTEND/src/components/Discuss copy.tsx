@@ -20,7 +20,6 @@ import { useThreadCard } from "../features/threads/useThread";
 import API from "../lib/api";
 import { IGetThreads } from "../features/interface/user";
 import moment from "moment";
-import { Link } from "react-router-dom";
 
 export default function Article() {
   const {
@@ -76,13 +75,8 @@ export default function Article() {
               >
                 {/* Menu Sidebar */}
                 <Stack mt={5} spacing={2} mr={5}>
-                  <Link to="/">
-                    <MenuItem icon={<FaHome />} text="Beranda" />
-                  </Link>
-                  <Link to={"/Product"}>
-                    <MenuItem icon={<FaProductHunt />} text="Produk" />
-                  </Link>
-
+                  <MenuItem icon={<FaHome />} text="Beranda" />
+                  <MenuItem icon={<FaProductHunt />} text="Produk" />
                   <MenuItem icon={<FaBook />} text="Artikel" />
                 </Stack>
               </Box>
