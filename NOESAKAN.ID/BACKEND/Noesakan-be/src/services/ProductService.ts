@@ -52,6 +52,7 @@ class ProductService {
         where: {
           id: id,
         },
+        relations: ["stores"],
 
         // relations: ["stores, users"],
       });
@@ -63,6 +64,7 @@ class ProductService {
         stock: product.stock,
         image: product.image,
         createdAt: product.createdAt,
+        store: product.stores,
       };
     } catch (err) {
       throw new Error(err.message);

@@ -65,7 +65,7 @@ router.post(
 );
 
 router.get("/product/user", authenticate, ProductController.find);
-router.get("/product/:id", authenticate, ProductController.findOne);
+router.get("/product/:id", ProductController.findOne);
 router.get("/product", ProductController.findAll);
 router.post(
   "/product/create",

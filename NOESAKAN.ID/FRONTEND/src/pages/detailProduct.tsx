@@ -1,23 +1,26 @@
-import { Image } from '@chakra-ui/image';
-import { Box, Flex, Text } from '@chakra-ui/layout';
-import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import { useState } from 'react';
-import { Button } from '@chakra-ui/button';
-import Navbar from '../features/navbar';
-import ProductInDetail from './productInDetail';
-import Testimonials from './testimonials';
-import Footer from './footer';
+import { Image } from "@chakra-ui/image";
+import { Box, Flex, Text } from "@chakra-ui/layout";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { Button } from "@chakra-ui/button";
+import Navbar from "../features/navbar";
+import ProductInDetail from "./productInDetail";
+import Testimonials from "./testimonials";
+import Footer from "./footer";
+import API from "../lib/api";
+import { Link, useParams } from "react-router-dom";
 
 function randomColor() {
   return Math.floor(Math.random() * 2);
 }
 
-const colorList: string[] = ['#E83636', 'blue.500'];
+const colorList: string[] = ["#E83636", "blue.500"];
 
 const data = {
   isNew: true,
-  imageURL: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
-  name: 'Wayfarer Classic',
+  imageURL:
+    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
+  name: "Wayfarer Classic",
   price: 4.5,
   rating: 4.2,
   numReviews: 34,
@@ -30,45 +33,27 @@ interface RatingProps {
 
 export function Rating({ rating, numReviews }: RatingProps) {
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-    >
+    <Box display="flex" alignItems="center">
       {Array(5)
-        .fill('')
+        .fill("")
         .map((_, i) => {
           const roundedRating = Math.round(rating * 2) / 2;
           if (roundedRating - i >= 1) {
             return (
               <BsStarFill
                 key={i}
-                style={{ marginLeft: '1' }}
-                color={i < rating ? 'teal.500' : 'gray.300'}
+                style={{ marginLeft: "1" }}
+                color={i < rating ? "teal.500" : "gray.300"}
               />
             );
           }
           if (roundedRating - i === 0.5) {
-            return (
-              <BsStarHalf
-                key={i}
-                style={{ marginLeft: '1' }}
-              />
-            );
+            return <BsStarHalf key={i} style={{ marginLeft: "1" }} />;
           }
-          return (
-            <BsStar
-              key={i}
-              style={{ marginLeft: '1' }}
-            />
-          );
+          return <BsStar key={i} style={{ marginLeft: "1" }} />;
         })}
-      <Box
-        as="span"
-        ml="2"
-        color="gray.600"
-        fontSize="sm"
-      >
-        {numReviews} review{numReviews > 1 && 's'}
+      <Box as="span" ml="2" color="gray.600" fontSize="sm">
+        {numReviews} review{numReviews > 1 && "s"}
       </Box>
     </Box>
   );
@@ -76,70 +61,87 @@ export function Rating({ rating, numReviews }: RatingProps) {
 
 export default function DetailProduct() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
+  const { id } = useParams();
+  console.log(id);
+
+  const [product, setProduct] = useState<any>([]);
+
+  async function fetchData() {
+    try {
+      const res = await API.get(`/product/${id}`);
+      setProduct(res.data);
+    } catch (error) {
+      console.error({ error: "salah ya ni" });
+    }
+  }
+
+  const [productAll, setProductAll] = useState<any>([]);
+
+  async function fetchDataAll() {
+    try {
+      const res = await API.get("/product");
+      setProductAll(res.data);
+    } catch (error) {
+      console.error({ error: "salah ya ni" });
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+    fetchDataAll();
+  }, []);
   return (
     <>
-      <Box backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 255, 0.2))`}>
+      <Box
+        backgroundImage={`linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 255, 0.2))`}
+      >
         <Navbar />
         <Box pt={10}>
-          <Flex
-            p={10}
-            gap={10}
-          >
-            <Box>
+          <Flex p={10} gap={10}>
+            <Box height={"400px"} width={"650px"}>
               <Image
+                objectFit={"cover"}
+                h={"100%"}
+                w={"100%"}
                 borderRadius={10}
-                src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=8"
               />
             </Box>
             <Box>
-              <Flex
-                flexDirection={'column'}
-                pt={5}
-              >
-                <Text
-                  fontWeight={'bold'}
-                  fontSize={'35px'}
-                >
-                  Ikan Cupang
+              <Flex flexDirection={"column"} pt={5}>
+                <Text fontWeight={"bold"} fontSize={"35px"}>
+                  {product?.productName}
                 </Text>
-                <Text
-                  fontSize={'23px'}
-                  fontWeight="bold"
-                  color="white"
-                >
-                  Rp.13.000/Kg
+                <Text fontSize={"23px"} fontWeight="bold" color="white">
+                  Rp.{product?.price}/Kg
                 </Text>
-                <Text
-                  fontWeight={'500'}
-                  mb={2}
-                >
-                  Fishing Store
+                <Text fontWeight={"500"} mb={2}>
+                  {product?.store?.name} Store
                 </Text>
-                <Rating
-                  rating={data.rating}
-                  numReviews={data.numReviews}
-                />
+                <Rating rating={data.rating} numReviews={data.numReviews} />
                 <Text mt={5}>Keterangan Produk:</Text>
-                <Text
-                  w={'390px'}
-                  textAlign={'justify'}
-                >
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fugiat quas modi quisquam temporibus quis error, odit voluptatum totam asperiores rem illum natus magnam molestias, aperiam adipisci at, quo soluta?
+                <Text w={"390px"} textAlign={"justify"}>
+                  {product?.description}
                 </Text>
-                <Button
-                  w={'50%'}
-                  mt={5}
-                  bgColor={`${colorCode}`}
-                  color={'white'}
-                  rounded={'md'}
-                  _hover={{
-                    transform: 'translateY(-2px)',
-                    boxShadow: 'lg',
-                  }}
-                  onClick={() => setColorCode(colorList[randomColor()])}
+                <Link
+                  target="_blank"
+                  to={`https://wa.me/${product?.store?.phoneNumber}`}
                 >
-                  Hubungi Pembeli
-                </Button>
+                  <Button
+                    w={"50%"}
+                    mt={5}
+                    bgColor={`${colorCode}`}
+                    color={"white"}
+                    rounded={"md"}
+                    _hover={{
+                      transform: "translateY(-2px)",
+                      boxShadow: "lg",
+                    }}
+                    onClick={() => setColorCode(colorList[randomColor()])}
+                  >
+                    Hubungi Pembeli
+                  </Button>
+                </Link>
               </Flex>
             </Box>
           </Flex>

@@ -116,7 +116,14 @@ export default function Product() {
             <GiCirclingFish fontSize={"25px"} />
           </Flex>
         </Box>
-        <Grid templateColumns="repeat(4, 1fr)" gap={6} pt={10} px={10}>
+        <Box
+          display={"flex"}
+          flexWrap={"wrap"}
+          justifyContent={"center"}
+          gap={6}
+          pt={10}
+          px={10}
+        >
           {product.map((item: any, index: number) => (
             <Box
               key={index}
@@ -126,7 +133,7 @@ export default function Product() {
               h={"350px"}
               borderRadius={10}
             >
-              <Link to={"#"}>
+              <Link to={`/productDetail/${item?.id}`}>
                 <Flex flexDirection={"column"}>
                   <Box width={"280px"} height={"250px"}>
                     <Image
@@ -164,7 +171,7 @@ export default function Product() {
               </Link>
             </Box>
           ))}
-        </Grid>
+        </Box>
       </Box>
     </>
   );
