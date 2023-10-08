@@ -55,7 +55,7 @@ export default function StoreProductInStore() {
   async function fetchData() {
     const token = localStorage.getItem("token");
     try {
-      const res = await API.get("/product", {
+      const res = await API.get("/product/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -108,7 +108,11 @@ export default function StoreProductInStore() {
                     objectFit={"cover"}
                     h={"100%"}
                     w={"100%"}
-                    src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                    src={
+                      item?.image
+                        ? item?.image
+                        : "https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                    }
                   />
                 </Box>
                 <Flex p={2} flexDirection={"column"}>
@@ -122,7 +126,7 @@ export default function StoreProductInStore() {
                       fontWeight="bold"
                       color={"blue.900"}
                     >
-                      {item?.name}
+                      {item?.productName}
                     </Text>
                     <Text>Rp. {item?.price}/kg</Text>
                   </Flex>

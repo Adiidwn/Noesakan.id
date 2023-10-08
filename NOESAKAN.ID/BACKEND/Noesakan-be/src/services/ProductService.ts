@@ -11,13 +11,15 @@ class ProductService {
   private readonly storeRepository: Repository<Store> =
     AppDataSource.getRepository(Store);
 
-  async find(reqQuery?: any, loginSession?: any) {
+  async find(req: Request, res: Response) {
+    console.log("req", res.locals.loginSession);
+
     try {
       const product = await this.productRepository.find({
         where: {
           stores: {
             users: {
-              id: loginSession.id,
+              id: res.locals.loginSession.id,
             },
           },
         },
@@ -66,6 +68,52 @@ class ProductService {
       throw new Error(err.message);
     }
   }
+
+  async findAll(req: Request, res: Response) {
+    try {
+      const product = await this.productRepository.find({
+        relations: ["stores"],
+        take: 20,
+        order: {
+          id: "DESC",
+        },
+      });
+      return product.map((element) => ({
+        id: element.id,
+        productName: element.productName,
+        price: element.price,
+        stock: element.stock,
+        image: element.image,
+        createdAt: element.createdAt,
+        store: element.stores,
+        // stores: element.stores.name,
+        // likesCount: element.likes.length,
+        // isLiked: element.likes.some((like:any) => like.user.is === loginSession.id),
+      }));
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+  // async findAll(req: Request, res: Response): Promise<any> {
+  //   try {
+  //     const product = await this.productRepository.find({
+  //       relations: ["stores"],
+  //       take: 20,
+  //     });
+  //     return product.map((element) => ({
+  //       id: element?.id,
+  //       productName: element?.productName,
+  //       price: element?.price,
+  //       description: element?.description,
+  //       stock: element?.stock,
+  //       image: element?.image,
+  //       createdAt: element?.createdAt,
+  //     }));
+  //   } catch (err) {
+  //     throw new Error(err.message);
+  //   }
+  // }
 
   async create(req: Request, res: Response) {
     const { productName, price, description, stock, image } = req.body;

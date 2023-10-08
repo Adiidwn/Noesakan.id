@@ -64,8 +64,9 @@ router.post(
   StoreController.update
 );
 
-router.get("/product", authenticate, ProductController.find);
+router.get("/product/user", authenticate, ProductController.find);
 router.get("/product/:id", authenticate, ProductController.findOne);
+router.get("/product", ProductController.findAll);
 router.post(
   "/product/create",
   authenticate,

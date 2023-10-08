@@ -21,6 +21,15 @@ class ProductController {
       return res.status(500).json({ error: err.message });
     }
   }
+
+  async findAll(req: Request, res: Response) {
+    try {
+      const response = await ProductService.findAll(req, res);
+      return res.status(200).json(response);
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
   create(req: Request, res: Response) {
     ProductService.create(req, res);
   }
