@@ -2,7 +2,6 @@ import { Avatar, Box, Button, Flex, Text, useColorModeValue } from '@chakra-ui/r
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 function randomColor() {
@@ -156,8 +155,8 @@ export default function RoomDiscuss() {
                   <Avatar src="https://images.unsplash.com/photo-1537033206914-9d3551ff8103?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGlnfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" />
                 </Box>
                 <Flex flexDirection={'column'}>
-                  <Text fontWeight={'bold'}>Erwin Babi</Text>
-                  <Text fontSize={'14px'}>@babi123</Text>
+                  <Text fontWeight={'bold'}>Erwin</Text>
+                  <Text fontSize={'14px'}>@erwin123</Text>
                   <Text fontSize={'15px'}>Makan udang pake sambel enak kali ya</Text>
                   <Flex
                     justifyContent={'space-between'}
