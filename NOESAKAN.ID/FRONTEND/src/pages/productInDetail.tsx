@@ -1,9 +1,5 @@
-import { Box, Flex, Grid, GridItem, Image, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, Image, Text } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import FilterCategory from '../features/filterCategory';
-import Search from '../features/search';
-import { PiFishFill } from 'react-icons/pi';
-import { GiCirclingFish } from 'react-icons/gi';
 
 const data = {
   isNew: true,
