@@ -111,7 +111,7 @@ export default function StoreProductInStore() {
                     src={
                       item?.image
                         ? item?.image
-                        : "https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlzaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                        : "https://cdn0-production-images-kly.akamaized.net/9K8gn2J1Xr8RNpXd5AWc1Gvupr0=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3330714/original/041407100_1608625123-lobster_garut_3.jpg"
                     }
                   />
                 </Box>
