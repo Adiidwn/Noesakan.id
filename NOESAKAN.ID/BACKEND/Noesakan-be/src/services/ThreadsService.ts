@@ -61,13 +61,13 @@ class ThreadService {
   async create(req: Request, res: Response) {
     const { content } = req.body;
     const loginSession = res.locals.loginSession;
+    const filename = res.locals.filename;
+    console.log("filenameSErVICE:", filename);
     console.log("LOGIN SESI NIH BOS", loginSession);
 
     // console.log("USERLOGIN NIH",loginSession)
 
     try {
-      const filename = res.locals.filename;
-      console.log("filenameSErVICE:", filename);
       const data = this.threadRepository.create({
         content: content,
         image: filename,

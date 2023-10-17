@@ -101,7 +101,7 @@ export default function Article() {
                       src="https://th.bing.com/th/id/OIP.IIJIg03KabRNrHxnTNxJzgHaJQ?w=192&h=240&c=7&r=0&o=5&dpr=1.4&pid=1.7"
                     />
                     <Input
-                      placeholder="Apa yang Anda pikirkan?"
+                      placeholder="Sedang Mencari Perikanan apa..?"
                       size="sm"
                       borderRadius="full"
                       bg={"gray.100"}
