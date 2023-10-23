@@ -6,8 +6,8 @@ export interface IStoreCreate {
   city: string;
   district: string;
   description: string;
-  phoneNumber: number;
-  age: number;
-  bankAccount: number;
-  image: string;
+  phoneNumber: number | string;
+  age: number | string;
+  bankAccount: number | string;
+  image: string | Blob | MediaSource;
 }

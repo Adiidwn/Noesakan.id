@@ -14,7 +14,7 @@ class ReplyController {
     try {
       const dataResponse = res.locals;
       const idStore = req.query.threadId;
-      const response = await ReplyService.create(dataResponse, idStore);
+      const response = await ReplyService.create(dataResponse, idStore, req);
       return res.status(200).json(response);
     } catch (err) {
       return res.status(500).json({ error: err.message });

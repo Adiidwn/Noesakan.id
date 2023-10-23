@@ -32,23 +32,7 @@ class StoreService {
       const data = req.body;
       const loginSession = res.locals.loginSession;
 
-      const filename = res.locals.filename;
-
-      cloudinary.config({
-        cloud_name: process.env.CLOUD_NAME,
-        api_key: process.env.API_KEY,
-        api_secret: process.env.API_SECRET,
-      });
-
-      let cloudinaryResponse = undefined;
-
-      if (filename) {
-        cloudinaryResponse = await cloudinary.uploader.upload(
-          "./src/uploads/" + filename
-        );
-      }
-
-      console.log("cloud Res", cloudinaryResponse);
+      const filename = req.file ? req.file.path : "";
 
       const store = this.storeRepository.create({
         name: data.name,
@@ -65,8 +49,8 @@ class StoreService {
         },
       });
 
-      if (cloudinaryResponse !== undefined) {
-        store.image = cloudinaryResponse.secure_url;
+      if (req.file !== undefined) {
+        store.image = filename;
       }
 
       console.log("ini Store", store);

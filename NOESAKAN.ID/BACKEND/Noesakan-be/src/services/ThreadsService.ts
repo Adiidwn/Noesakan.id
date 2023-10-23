@@ -66,32 +66,23 @@ class ThreadService {
     // console.log("USERLOGIN NIH",loginSession)
 
     try {
-      const filename = res.locals.filename;
+      const filename = req.file ? req.file.path : "";
       console.log("filenameSErVICE:", filename);
-      const data = this.threadRepository.create({
+      const data = {
         content: content,
         image: filename,
         users: loginSession,
-      });
+      };
       console.log("ini data boss", data);
-
-      const cloudinaryID = cloudinary.config({
-        cloud_name: process.env.CLOUD_NAME,
-        api_key: process.env.API_KEY,
-        api_secret: process.env.API_SECRET,
-      });
-
-      const cloudinaryResponse = await cloudinary.uploader.upload(
-        "./src/uploads/" + filename
-      );
-
-      console.log("cloudinary apaan nih service:", cloudinaryResponse);
 
       const thread = this.threadRepository.create({
         content: data.content,
-        image: cloudinaryResponse.secure_url,
         users: data.users,
       });
+
+      if (req.file !== undefined) {
+        thread.image = filename;
+      }
 
       const createdThread = await this.threadRepository.save(thread);
 

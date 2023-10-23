@@ -117,8 +117,8 @@ class ProductService {
 
   async create(req: Request, res: Response) {
     const { productName, price, description, stock, image } = req.body;
+    const filename = req.file ? req.file.path : "";
 
-    const filename = res.locals.filename;
     const getStore = this.storeRepository.findOne({
       where: {
         users: {
@@ -138,20 +138,6 @@ class ProductService {
         image: image,
       });
 
-      let cloudinaryResponse = undefined;
-
-      cloudinary.config({
-        cloud_name: process.env.CLOUD_NAME,
-        api_key: process.env.API_KEY,
-        api_secret: process.env.API_SECRET,
-      });
-
-      if (filename) {
-        cloudinaryResponse = await cloudinary.uploader.upload(
-          "./src/uploads/" + filename
-        );
-      }
-
       const product = this.productRepository.create({
         productName: data.productName,
         price: data.price,
@@ -162,12 +148,11 @@ class ProductService {
         },
       });
 
-      if (cloudinaryResponse !== undefined) {
-        product.image = cloudinaryResponse.secure_url;
+      if (req.file !== undefined) {
+        product.image = filename;
       }
       console.log("product", product);
       console.log("filename", filename);
-      console.log("cloudinaryResponse", cloudinaryResponse);
 
       const createdProduct = await this.productRepository.save(product);
 

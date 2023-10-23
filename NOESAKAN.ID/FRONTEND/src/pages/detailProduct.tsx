@@ -1,15 +1,14 @@
+import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { Button } from "@chakra-ui/button";
-import Navbar from "../features/navbar";
-import ProductInDetail from "./productInDetail";
-import Testimonials from "./testimonials";
-import Footer from "./footer";
-import API from "../lib/api";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../features/navbar";
+import API from "../lib/api";
+import Footer from "./footer";
 import Product from "./product";
+import Testimonials from "./testimonials";
 
 function randomColor() {
   return Math.floor(Math.random() * 2);
@@ -63,9 +62,9 @@ export function Rating({ rating, numReviews }: RatingProps) {
 export default function DetailProduct() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
   const { id } = useParams();
-  console.log(id);
 
   const [product, setProduct] = useState<any>([]);
+  console.log("product", product);
 
   async function fetchData() {
     try {
@@ -93,7 +92,10 @@ export default function DetailProduct() {
                 h={"100%"}
                 w={"100%"}
                 borderRadius={10}
-                src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=8"
+                src={
+                  product?.image ??
+                  "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=8"
+                }
               />
             </Box>
             <Box>

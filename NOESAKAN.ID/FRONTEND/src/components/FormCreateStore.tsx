@@ -1,6 +1,5 @@
 "use client";
 
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -12,11 +11,8 @@ import {
   IconProps,
   Input,
   InputGroup,
-  InputRightElement,
-  Link,
   SimpleGrid,
   Stack,
-  Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
@@ -54,29 +50,48 @@ export default function FormCreateStore() {
     city: "",
     district: "",
     description: "",
-    phoneNumber: 0,
-    age: 0,
-    bankAccount: 0,
+    phoneNumber: "",
+    age: "",
+    bankAccount: "",
     image: "",
   });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+    const { name, value, files } = event.target;
+    if (files) {
+      setForm({
+        ...form,
+        [name]: files[0],
+      });
+    } else {
+      setForm({
+        ...form,
+        [name]: value,
+      });
+    }
   }
 
   async function handleCreateStore() {
     const token = localStorage.getItem("token");
     try {
+      const formData = new FormData();
+      formData.append("name", form.name as string);
+      formData.append("userName", form.userName as string);
+      formData.append("province", form.province as string);
+      formData.append("city", form.city as string);
+      formData.append("district", form.district as string);
+      formData.append("description", form.description as string);
+      formData.append("phoneNumber", form.phoneNumber as string);
+      formData.append("age", form.age as string);
+      formData.append("bankAccount", form.bankAccount as string);
+      formData.append("image", form.image as File);
       const response = await API.post("/store/create", form, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      navigate("/");
       console.log("registrasion Store Success", response);
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -92,7 +107,7 @@ export default function FormCreateStore() {
   //   };
   const navigate = useNavigate();
 
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   return (
     <Box
       position={"relative"}
@@ -256,7 +271,7 @@ export default function FormCreateStore() {
                     color: "gray.500",
                   }}
                   placeholder="Phone Number"
-                  type="number"
+                  type="text"
                   name="phoneNumber"
                   onChange={handleChange}
                 />
@@ -272,8 +287,8 @@ export default function FormCreateStore() {
                   _placeholder={{
                     color: "gray.500",
                   }}
-                  placeholder="dd/mm/yyyy"
-                  type="number"
+                  placeholder="Age"
+                  type="text"
                   name="age"
                   onChange={handleChange}
                 />
@@ -290,7 +305,7 @@ export default function FormCreateStore() {
                     color: "gray.500",
                   }}
                   placeholder="Bank Account"
-                  type="number"
+                  type="text"
                   name="bankAccount"
                   onChange={handleChange}
                 />
@@ -309,6 +324,7 @@ export default function FormCreateStore() {
                   type="file"
                   id="img"
                   hidden
+                  onChange={handleChange}
                 />
               </Box>
             </Stack>

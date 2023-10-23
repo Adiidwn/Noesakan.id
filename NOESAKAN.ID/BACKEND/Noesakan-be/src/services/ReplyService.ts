@@ -68,7 +68,7 @@ class ReplyService {
   //   }
   // }
 
-  async create(dataResponse: any, idStore: any) {
+  async create(dataResponse: any, idStore: any, req: Request) {
     const id = parseInt(idStore as string);
     const res = dataResponse;
     console.log({ res: res, id: idStore });
@@ -77,23 +77,7 @@ class ReplyService {
       const data = res;
       const loginSession = res.loginSession.id as number;
 
-      const filename = res.filename;
-
-      cloudinary.config({
-        cloud_name: process.env.CLOUD_NAME,
-        api_key: process.env.API_KEY,
-        api_secret: process.env.API_SECRET,
-      });
-
-      let cloudinaryResponse = undefined;
-
-      if (filename) {
-        cloudinaryResponse = await cloudinary.uploader.upload(
-          "./src/uploads/" + filename
-        );
-      }
-
-      console.log("cloud Res", cloudinaryResponse);
+      const filename = req.file ? req.file.path : "";
 
       const store = this.replyRepository.create({
         content: data.content,
@@ -105,8 +89,8 @@ class ReplyService {
         },
       });
 
-      if (cloudinaryResponse !== undefined) {
-        store.image = cloudinaryResponse.secure_url;
+      if (req.file !== undefined) {
+        store.image = filename;
       }
 
       console.log("ini Store", store);

@@ -1,16 +1,15 @@
 import Home from "./pages/home";
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Login } from "./pages/login";
-import Register from "./pages/register";
-import DetailProduct from "./pages/detailProduct";
-import Product from "./pages/product";
-import DetailArticle from "./pages/detailarticle";
-import Store from "./pages/store";
 import Discuss from "./components/Discuss";
-import CreateStore from "./pages/createStore";
-import RoomDiscuss from "./pages/roomDiscuss";
 import ArticleList from "./pages/article";
+import CreateStore from "./pages/createStore";
+import DetailProduct from "./pages/detailProduct";
+import DetailArticle from "./pages/detailarticle";
+import { Login } from "./pages/login";
+import Product from "./pages/product";
+import Register from "./pages/register";
+import Store from "./pages/store";
 
 function App() {
   //   const [isLoading, setIsLoading] =useState<boolean>(true)
