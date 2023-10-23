@@ -8,6 +8,7 @@ import Footer from "./footer";
 import StoreProductInStore from "./storeProductInStore";
 import FormCreateProduct from "../components/cardProduct";
 import API from "../lib/api";
+import UseProductCreate from "../features/Product/useProductCreate";
 
 function randomColor() {
   return Math.floor(Math.random() * 2);
@@ -60,26 +61,9 @@ export function Rating({ rating, numReviews }: RatingProps) {
 
 export default function Store() {
   const [colorCode, setColorCode] = useState(colorList[randomColor()]);
+  const { store, coba, setCoba } = UseProductCreate();
+  console.log("storee", store);
 
-  const [store, setStore] = useState<any>([]);
-
-  async function fetchData() {
-    const token = localStorage.getItem("token");
-    try {
-      const res = await API.get("/store/get", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setStore(res.data);
-    } catch (error) {
-      console.error({ error: "salah ya ni" });
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <>
       <Box

@@ -50,8 +50,10 @@ const Blur = (props: IconProps) => {
 };
 
 export default function FormCreateProduct() {
-  const { form, handleChange, handleSubmit, handleCreateProduct } =
+  const { coba, form, handleChange, handleSubmit, handleCreateProduct } =
     UseProductCreate();
+  console.log("form", form);
+
   // async function handleImageChange(event: ChangeEvent<HTMLInputElement>) {
   //   const file = event.target.files?.[0]
   //   if (file){
@@ -148,7 +150,7 @@ export default function FormCreateProduct() {
                     </InputGroup>
                   </FormControl>
                   <Box>
-                    <label htmlFor="img">
+                    <label htmlFor="image">
                       <Icon
                         float={"right"}
                         fontSize={"30px"}
@@ -159,7 +161,7 @@ export default function FormCreateProduct() {
                       onChange={handleChange}
                       name="image"
                       type="file"
-                      id="img"
+                      id="image"
                       hidden
                     />
                   </Box>

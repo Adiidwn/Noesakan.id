@@ -12,8 +12,6 @@ class ProductService {
     AppDataSource.getRepository(Store);
 
   async find(req: Request, res: Response) {
-    console.log("req", res.locals.loginSession);
-
     try {
       const product = await this.productRepository.find({
         where: {
@@ -119,6 +117,7 @@ class ProductService {
 
   async create(req: Request, res: Response) {
     const { productName, price, description, stock, image } = req.body;
+
     const filename = res.locals.filename;
     const getStore = this.storeRepository.findOne({
       where: {
@@ -127,8 +126,6 @@ class ProductService {
         },
       },
     });
-
-    console.log("getStore", await getStore);
 
     const idStore = await getStore;
 
@@ -165,9 +162,12 @@ class ProductService {
         },
       });
 
-      if (filename) {
+      if (cloudinaryResponse !== undefined) {
         product.image = cloudinaryResponse.secure_url;
       }
+      console.log("product", product);
+      console.log("filename", filename);
+      console.log("cloudinaryResponse", cloudinaryResponse);
 
       const createdProduct = await this.productRepository.save(product);
 

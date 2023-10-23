@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import API from "../../lib/api";
 import { IProducts } from "../../interfaces/Product";
 
@@ -7,9 +7,9 @@ export default function UseProductCreate() {
   const [form, setForm] = useState<IProducts>({
     productName: "",
     price: "",
-    image: "",
     description: "",
     stock: "",
+    image: "",
   });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -37,7 +37,13 @@ export default function UseProductCreate() {
 
     console.log(token);
     try {
-      const response = await API.post("/product/create", form, {
+      const formData = new FormData();
+      formData.append("productName", form.productName as string);
+      formData.append("price", form.price as string);
+      formData.append("description", form.description as string);
+      formData.append("stock", form.stock as string);
+      formData.append("image", form.image as File);
+      const response = await API.post("/product/create", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCoba("serah");
@@ -46,10 +52,34 @@ export default function UseProductCreate() {
       console.log(err);
     }
   }
+  const [store, setStore] = useState<any>([]);
+
+  async function fetchData() {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await API.get("/store/get", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setStore(res.data);
+      setCoba("oke");
+    } catch (error) {
+      console.error({ error: "salah ya ni" });
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+    setCoba("itu");
+    console.log("coba yaaaaaaaa", coba);
+  }, [coba == "serah"]);
 
   return {
+    store,
     coba,
     form,
+    setCoba,
     handleChange,
     handleSubmit,
     handleCreateProduct,

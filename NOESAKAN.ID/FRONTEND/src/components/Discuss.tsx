@@ -49,7 +49,7 @@ export default function Article() {
 
   useEffect(() => {
     fetchData();
-  }, [postData]);
+  }, []);
 
   return (
     <Box>

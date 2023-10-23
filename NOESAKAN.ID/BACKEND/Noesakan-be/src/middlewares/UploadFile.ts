@@ -59,6 +59,7 @@ export const upload = (image: string) => {
       const locals = Object.assign({}, res.locals, req.body);
       res.locals = locals;
       if (req.file) {
+        console.log("req.file", req.file);
         res.locals.filename = req.file.filename;
       }
       next();

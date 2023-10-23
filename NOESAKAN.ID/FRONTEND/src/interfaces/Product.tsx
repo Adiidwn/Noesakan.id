@@ -3,6 +3,6 @@ export interface IProducts {
   productName?: string;
   price?: string;
   description?: string;
-  stock: string;
-  image: string;
+  stock?: string;
+  image?: MediaSource | Blob | string;
 }

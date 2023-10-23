@@ -106,7 +106,6 @@ class AuthService {
   async check(req: Request, res: Response) {
     try {
       const loginSession = res.locals.loginSession;
-      console.log("service loginSession:", loginSession);
       const user = await this.authRepository.findOne({
         where: {
           id: loginSession.id,
